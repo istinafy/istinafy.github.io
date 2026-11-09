@@ -1,0 +1,244 @@
+(function () {
+  var cfg = window.SITE_CONFIG;
+  var packs = window.I18N;
+  var current = cfg.defaultLang;
+
+  function t(k) {
+    var p = packs[current] || {};
+    return p[k] != null ? p[k] : (packs[cfg.defaultLang][k] || k);
+  }
+
+  function pickInitialLang() {
+    var fromUrl = new URLSearchParams(location.search).get("lang");
+    if (fromUrl && packs[fromUrl]) return fromUrl;
+    try {
+      var saved = localStorage.getItem("lang");
+      if (saved && packs[saved]) return saved;
+    } catch (e) { /* storage blocked: fall through to browser language */ }
+    // Walk the whole preference list: a phone set to German with Arabic second should get Arabic, not Turkish.
+    var prefs = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || ""];
+    for (var i = 0; i < prefs.length; i++) {
+      var code = String(prefs[i]).slice(0, 2).toLowerCase();
+      if (packs[code]) return code;
+    }
+    return cfg.defaultLang;
+  }
+
+  var WA_ICON = '<svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.3-.4.8-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></svg>';
+
+  var MAIL_ICON = '<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Zm1 2.4V17h16V7.4l-8 5.3-8-5.3ZM5.6 7 12 11.2 18.4 7H5.6Z"/></svg>';
+
+  function waHref(lawyer) {
+    // The prefilled first line tells the owner which language the person reads and whether a lawyer is writing.
+    var digits = String(cfg.whatsapp).replace(/[^0-9]/g, "");
+    return "https://wa.me/" + digits + "?text=" + encodeURIComponent(t(lawyer ? "wa_prefill_lawyer" : "wa_prefill"));
+  }
+
+  function renderContacts() {
+    var hasWa = !!cfg.whatsapp;
+    document.body.classList.toggle("has-bar", hasWa);
+    document.querySelectorAll("[data-contact]").forEach(function (box) {
+      box.innerHTML = "";
+      var kind = box.getAttribute("data-contact");
+      var lawyer = kind === "lawyer";
+      if (kind === "fab") {
+        if (hasWa) { box.href = waHref(false); box.target = "_blank"; box.rel = "noopener"; box.innerHTML = WA_ICON.replace(/22/g, "30"); }
+        else box.removeAttribute("href");
+        return;
+      }
+      if (kind === "bar") {
+        if (hasWa) box.appendChild(waLink(false));
+        return;
+      }
+      if (!hasWa && !cfg.email) {
+        var s = document.createElement("span");
+        s.className = "soon";
+        s.textContent = t("cta_soon");
+        box.appendChild(s);
+        return;
+      }
+      if (hasWa) box.appendChild(waLink(lawyer));
+      if (cfg.email) {
+        var m = document.createElement("a");
+        m.className = "btn mail";
+        m.href = "mailto:" + cfg.email + "?subject=" + encodeURIComponent(t(lawyer ? "mail_subject_lawyer" : "mail_subject"));
+        m.innerHTML = MAIL_ICON;
+        var ms = document.createElement("span");
+        ms.textContent = lawyer ? t("lawyers_cta") : t("cta_email");
+        m.appendChild(ms);
+        box.appendChild(m);
+      }
+      if (kind === "full" && cfg.email) {
+        var addr = document.createElement("p");
+        addr.className = "addr";
+        addr.textContent = cfg.email;
+        box.appendChild(addr);
+      }
+    });
+  }
+
+  function waLink(lawyer) {
+    var wa = document.createElement("a");
+    wa.className = "btn wa";
+    wa.href = waHref(lawyer);
+    wa.target = "_blank";
+    wa.rel = "noopener";
+    wa.innerHTML = WA_ICON;
+    var s = document.createElement("span");
+    s.textContent = lawyer ? t("lawyers_cta_wa") : t("cta_whatsapp");
+    wa.appendChild(s);
+    return wa;
+  }
+
+  function apply(lang) {
+    current = lang;
+    var meta = cfg.languages.filter(function (l) { return l.code === lang; })[0];
+    document.documentElement.lang = lang;
+    document.documentElement.dir = meta ? meta.dir : "ltr";
+    document.querySelectorAll("[data-i18n]").forEach(function (el) {
+      el.textContent = t(el.getAttribute("data-i18n"));
+    });
+    document.querySelectorAll("[data-i18n-content]").forEach(function (el) {
+      el.setAttribute("content", t(el.getAttribute("data-i18n-content")));
+    });
+    document.title = t("page_title");
+    renderContacts();
+    renderCountries();
+    var out = document.getElementById("dl-out");
+    if (out.dataset.last) calc();
+    try { localStorage.setItem("lang", lang); } catch (e) { /* not persisted; page still works */ }
+  }
+
+  function todayISO() {
+    var d = new Date();
+    return new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate())).toISOString().slice(0, 10);
+  }
+
+  function formatDate(iso) {
+    var p = iso.split("-");
+    var d = new Date(+p[0], +p[1] - 1, +p[2]);
+    try {
+      return d.toLocaleDateString(current, { weekday: "long", year: "numeric", month: "long", day: "numeric" });
+    } catch (e) {
+      return iso;
+    }
+  }
+
+  var COUNTRY = document.getElementById("dl-country");
+  var TYPE = document.getElementById("dl-type");
+  var CUSTOM_WRAP = document.getElementById("dl-custom-wrap");
+
+  function countryName(code) {
+    try { return new Intl.DisplayNames([current], { type: "region" }).of(code) || code; } catch (e) { return code; }
+  }
+
+  function termLabel(term) {
+    var unit = term[2] === "m" ? t(term[1] === 1 ? "dl_u_m1" : "dl_u_m") : t("dl_u_" + term[2]);
+    return t("dl_t_" + term[0]) + " — " + term[1] + " " + unit;
+  }
+
+  function renderTypes(reset) {
+    var keep = reset ? "" : TYPE.value;
+    var c = window.Ulke.countries[COUNTRY.value];
+    TYPE.innerHTML = "";
+    (c ? c.t : []).forEach(function (term, i) { TYPE.appendChild(new Option(termLabel(term), String(i))); });
+    TYPE.appendChild(new Option(t("dl_t_custom"), "custom"));
+    if (keep && [].some.call(TYPE.options, function (o) { return o.value === keep; })) TYPE.value = keep;
+    CUSTOM_WRAP.hidden = TYPE.value !== "custom";
+  }
+
+  function renderCountries() {
+    var keep = COUNTRY.value;
+    var names = {};
+    var codes = Object.keys(window.Ulke.countries);
+    codes.forEach(function (c) { names[c] = countryName(c); });
+    codes.sort(function (a, b) { return names[a].localeCompare(names[b], current); });
+    COUNTRY.innerHTML = "";
+    var ph = new Option(t("dl_pick_country"), "");
+    ph.disabled = true;
+    COUNTRY.appendChild(ph);
+    codes.forEach(function (c) { COUNTRY.appendChild(new Option(names[c], c)); });
+    COUNTRY.value = keep;
+    renderTypes(false);
+  }
+
+  function note(out, cls, text) {
+    var el = document.createElement("div");
+    el.className = cls;
+    el.textContent = text;
+    out.appendChild(el);
+  }
+
+  function calc() {
+    var out = document.getElementById("dl-out");
+    var date = document.getElementById("dl-date").value;
+    var code = COUNTRY.value, c = window.Ulke.countries[code];
+    out.innerHTML = "";
+    if (!c) { out.textContent = t("dl_need_country"); return; }
+    if (!date) { out.textContent = t("dl_need_date"); return; }
+    var term;
+    if (TYPE.value === "custom") {
+      var n = parseInt(document.getElementById("dl-custom").value, 10);
+      if (!(n > 0)) { out.textContent = t("dl_need_days"); return; }
+      term = ["custom", n, "d"];
+    } else term = c.t[+TYPE.value];
+    out.dataset.last = "1";
+    var end = window.Ulke.lastDay(window.Deadline, code, term, date);
+    var left = window.Deadline.daysBetween(todayISO(), end);
+    var line1 = document.createElement("div");
+    line1.textContent = t("dl_result") + " " + formatDate(end);
+    var line2 = document.createElement("div");
+    if (left > 0) {
+      line2.className = left <= 3 ? "bad" : "good";
+      line2.textContent = t("dl_left") + " " + left;
+    } else if (left === 0) {
+      line2.className = "bad";
+      line2.textContent = t("dl_today");
+    } else {
+      line2.className = "bad";
+      line2.textContent = t("dl_expired");
+    }
+    out.appendChild(line1);
+    out.appendChild(line2);
+    note(out, "info", t("dl_st_" + c.st));
+    if (c.conf === "dusuk") note(out, "warn", t("dl_conf_low"));
+  }
+
+  COUNTRY.addEventListener("change", function () { renderTypes(true); });
+  TYPE.addEventListener("change", function () { CUSTOM_WRAP.hidden = TYPE.value !== "custom"; });
+
+  var sel = document.getElementById("lang-select");
+  cfg.languages.forEach(function (l) {
+    if (!packs[l.code]) return;
+    var o = document.createElement("option");
+    o.value = l.code;
+    o.textContent = l.name;
+    sel.appendChild(o);
+  });
+  sel.addEventListener("change", function () { apply(sel.value); });
+  document.getElementById("dl-form").addEventListener("submit", function (e) {
+    e.preventDefault();
+    calc();
+  });
+
+  var initial = pickInitialLang();
+  sel.value = initial;
+  apply(initial);
+
+  var hdr = document.getElementById("hdr");
+  function onScroll() { hdr.classList.toggle("scrolled", window.scrollY > 12); }
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+
+  var items = document.querySelectorAll(".rv");
+  if ("IntersectionObserver" in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); }
+      });
+    }, { rootMargin: "0px 0px -8% 0px", threshold: 0.08 });
+    items.forEach(function (el) { io.observe(el); });
+  } else {
+    items.forEach(function (el) { el.classList.add("in"); });
+  }
+})();
