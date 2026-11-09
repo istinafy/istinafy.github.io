@@ -18,7 +18,9 @@
     // Walk the whole preference list: a phone set to German with Arabic second should get Arabic, not Turkish.
     var prefs = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || ""];
     for (var i = 0; i < prefs.length; i++) {
-      var code = String(prefs[i]).slice(0, 2).toLowerCase();
+      var raw = String(prefs[i]).toLowerCase();
+      // Kurmanji may be reported as "kmr"; a plain two-letter slice would read it as Khmer ("km").
+      var code = raw.indexOf("kmr") === 0 ? "ku" : raw.slice(0, 2);
       if (packs[code]) return code;
     }
     return cfg.defaultLang;
@@ -28,10 +30,52 @@
 
   var MAIL_ICON = '<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Zm1 2.4V17h16V7.4l-8 5.3-8-5.3ZM5.6 7 12 11.2 18.4 7H5.6Z"/></svg>';
 
-  function waHref(lawyer) {
-    // The prefilled first line tells the owner which language the person reads and whether a lawyer is writing.
+  var SOCIAL_ICONS = {
+    instagram: '<svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>',
+    tiktok: '<svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M16.6 5.8A4.3 4.3 0 0 1 15.5 3h-3.1v12.4a2.6 2.6 0 1 1-2.6-2.6c.3 0 .5 0 .8.1V9.7a5.7 5.7 0 1 0 4.9 5.7V9.1a7.3 7.3 0 0 0 4.3 1.4V7.4a4.3 4.3 0 0 1-3.2-1.6Z"/></svg>',
+    youtube: '<svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" fill-rule="evenodd" d="M21.6 7.2a2.5 2.5 0 0 0-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4A2.5 2.5 0 0 0 2.4 7.2 26 26 0 0 0 2 12a26 26 0 0 0 .4 4.8 2.5 2.5 0 0 0 1.8 1.8C5.8 19 12 19 12 19s6.2 0 7.8-.4a2.5 2.5 0 0 0 1.8-1.8A26 26 0 0 0 22 12a26 26 0 0 0-.4-4.8ZM10 15V9l5.2 3L10 15Z"/></svg>',
+    facebook: '<svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M13.5 21v-7.5h2.5l.4-3h-2.9V8.6c0-.9.3-1.5 1.5-1.5h1.6V4.4c-.3 0-1.2-.1-2.3-.1-2.3 0-3.8 1.4-3.8 3.9v2.3H8v3h2.5V21h3Z"/></svg>'
+  };
+
+  // Countries named in the services block; the last chip ("and anywhere in the world") comes from the language pack.
+  var WORLD = ["NL", "TR", "DE", "BE", "FR", "GB", "SE", "AT", "CH", "IT", "ES", "US"];
+
+  var PREFILL = { lawyer: "wa_prefill_lawyer", biz: "wa_prefill_biz" };
+  var WA_LABEL = { lawyer: "lawyers_cta_wa", biz: "svc_btn" };
+
+  function waHref(kind) {
+    // The prefilled first line tells the owner which language the person reads and who is writing (person, lawyer, business).
     var digits = String(cfg.whatsapp).replace(/[^0-9]/g, "");
-    return "https://wa.me/" + digits + "?text=" + encodeURIComponent(t(lawyer ? "wa_prefill_lawyer" : "wa_prefill"));
+    return "https://wa.me/" + digits + "?text=" + encodeURIComponent(t(PREFILL[kind] || "wa_prefill"));
+  }
+
+  function renderSocial() {
+    document.querySelectorAll("[data-social]").forEach(function (ul) {
+      ul.innerHTML = "";
+      (cfg.social || []).forEach(function (s) {
+        var li = document.createElement("li");
+        var a = document.createElement("a");
+        a.href = s.url;
+        a.target = "_blank";
+        a.rel = "noopener";
+        a.setAttribute("aria-label", s.name);
+        a.title = s.name;
+        a.innerHTML = SOCIAL_ICONS[s.id] || "";
+        li.appendChild(a);
+        ul.appendChild(li);
+      });
+    });
+  }
+
+  function renderWorld() {
+    document.querySelectorAll("[data-world]").forEach(function (ul) {
+      ul.innerHTML = "";
+      WORLD.concat([null]).forEach(function (c) {
+        var li = document.createElement("li");
+        li.textContent = c ? countryName(c) : t("svc_world");
+        ul.appendChild(li);
+      });
+    });
   }
 
   function renderContacts() {
@@ -42,12 +86,16 @@
       var kind = box.getAttribute("data-contact");
       var lawyer = kind === "lawyer";
       if (kind === "fab") {
-        if (hasWa) { box.href = waHref(false); box.target = "_blank"; box.rel = "noopener"; box.innerHTML = WA_ICON.replace(/22/g, "30"); }
+        if (hasWa) { box.href = waHref(""); box.target = "_blank"; box.rel = "noopener"; box.innerHTML = WA_ICON.replace(/22/g, "30"); }
         else box.removeAttribute("href");
         return;
       }
       if (kind === "bar") {
-        if (hasWa) box.appendChild(waLink(false));
+        if (hasWa) box.appendChild(waLink(""));
+        return;
+      }
+      if (kind === "biz") {
+        if (hasWa) box.appendChild(waLink("biz"));
         return;
       }
       if (!hasWa && !cfg.email) {
@@ -57,7 +105,7 @@
         box.appendChild(s);
         return;
       }
-      if (hasWa) box.appendChild(waLink(lawyer));
+      if (hasWa) box.appendChild(waLink(kind));
       if (cfg.email) {
         var m = document.createElement("a");
         m.className = "btn mail";
@@ -77,15 +125,15 @@
     });
   }
 
-  function waLink(lawyer) {
+  function waLink(kind) {
     var wa = document.createElement("a");
     wa.className = "btn wa";
-    wa.href = waHref(lawyer);
+    wa.href = waHref(kind);
     wa.target = "_blank";
     wa.rel = "noopener";
     wa.innerHTML = WA_ICON;
     var s = document.createElement("span");
-    s.textContent = lawyer ? t("lawyers_cta_wa") : t("cta_whatsapp");
+    s.textContent = t(WA_LABEL[kind] || "cta_whatsapp");
     wa.appendChild(s);
     return wa;
   }
@@ -104,6 +152,8 @@
     document.title = t("page_title");
     renderContacts();
     renderCountries();
+    renderWorld();
+    MENU_BTN.setAttribute("aria-label", t("nav_menu"));
     var out = document.getElementById("dl-out");
     if (out.dataset.last) calc();
     try { localStorage.setItem("lang", lang); } catch (e) { /* not persisted; page still works */ }
@@ -117,6 +167,11 @@
   function formatDate(iso) {
     var p = iso.split("-");
     var d = new Date(+p[0], +p[1] - 1, +p[2]);
+    // Browsers ship no Kurdish locale data and would silently fall back to the system language.
+    var own = packs[current] || {};
+    if (own.date_months && own.date_days) {
+      return own.date_days.split("|")[d.getDay()] + ", " + d.getDate() + " " + own.date_months.split("|")[d.getMonth()] + " " + d.getFullYear();
+    }
     try {
       return d.toLocaleDateString(current, { weekday: "long", year: "numeric", month: "long", day: "numeric" });
     } catch (e) {
@@ -129,6 +184,8 @@
   var CUSTOM_WRAP = document.getElementById("dl-custom-wrap");
 
   function countryName(code) {
+    var own = (packs[current] || {})["region_" + code];
+    if (own) return own;
     try { return new Intl.DisplayNames([current], { type: "region" }).of(code) || code; } catch (e) { return code; }
   }
 
@@ -221,11 +278,22 @@
     calc();
   });
 
+  var hdr = document.getElementById("hdr");
+  var MENU_BTN = document.getElementById("menu-btn");
+  function setMenu(open) {
+    hdr.classList.toggle("menu-open", open);
+    MENU_BTN.setAttribute("aria-expanded", open ? "true" : "false");
+  }
+  MENU_BTN.addEventListener("click", function () { setMenu(!hdr.classList.contains("menu-open")); });
+  document.getElementById("nav").addEventListener("click", function (e) { if (e.target.closest("a")) setMenu(false); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") setMenu(false); });
+  document.addEventListener("click", function (e) { if (!hdr.contains(e.target)) setMenu(false); });
+
+  renderSocial();
   var initial = pickInitialLang();
   sel.value = initial;
   apply(initial);
 
-  var hdr = document.getElementById("hdr");
   function onScroll() { hdr.classList.toggle("scrolled", window.scrollY > 12); }
   window.addEventListener("scroll", onScroll, { passive: true });
   onScroll();
