@@ -91,8 +91,42 @@
     return key(end);
   }
 
+  // RFC 5545 TEXT: a comma or semicolon in a country name would otherwise split the value.
+  function icsText(s) {
+    return String(s).replace(/\\/g, "\\\\").replace(/;/g, "\\;").replace(/,/g, "\\,").replace(/\r?\n/g, "\\n");
+  }
+
+  // RFC 5545 3.1 folds at 75 octets; counting UTF-8 bytes per code point keeps Arabic and Turkish letters whole.
+  function icsFold(line) {
+    var out = "", len = 0;
+    for (var i = 0; i < line.length; i++) {
+      var cp = line.codePointAt(i);
+      var ch = String.fromCodePoint(cp);
+      if (cp > 0xffff) i++;
+      var b = cp < 0x80 ? 1 : cp < 0x800 ? 2 : cp < 0x10000 ? 3 : 4;
+      if (len + b > 75) { out += "\r\n "; len = 1; }
+      out += ch;
+      len += b;
+    }
+    return out;
+  }
+
+  // All-day event on the last day; reminders at 09:00 seven days and two days before (calendars skip past ones).
+  function icsEvent(o) {
+    var day = parseISODate(o.date);
+    if (!day) return null;
+    var ymd = function (d) { return key(d).replace(/-/g, ""); };
+    var alarm = function (trigger) { return ["BEGIN:VALARM", "ACTION:DISPLAY", "DESCRIPTION:" + icsText(o.title), "TRIGGER:" + trigger, "END:VALARM"]; };
+    var lines = ["BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//ISTINAFY//Deadline//EN", "CALSCALE:GREGORIAN", "METHOD:PUBLISH",
+      "BEGIN:VEVENT", "UID:" + o.uid, "DTSTAMP:" + o.stamp,
+      "DTSTART;VALUE=DATE:" + ymd(day), "DTEND;VALUE=DATE:" + ymd(addDays(day, 1)),
+      "SUMMARY:" + icsText(o.title), "DESCRIPTION:" + icsText(o.desc), "TRANSP:TRANSPARENT"]
+      .concat(alarm("-P6DT15H"), alarm("-P1DT15H"), ["END:VEVENT", "END:VCALENDAR"]);
+    return lines.map(icsFold).join("\r\n") + "\r\n";
+  }
+
   var api = { lastDay: lastDay, daysBetween: daysBetween, isNonWorkingDay: isNonWorkingDay, easterSunday: easterSunday, parseISODate: parseISODate,
-              computeLastDay: computeLastDay, addMonths: addMonths, holidaysNL: holidays };
+              computeLastDay: computeLastDay, addMonths: addMonths, holidaysNL: holidays, icsEvent: icsEvent };
   if (typeof module !== "undefined" && module.exports) module.exports = api;
   else root.Deadline = api;
 })(this);

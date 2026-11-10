@@ -5,23 +5,29 @@
 
   function t(k) {
     var p = packs[current] || {};
-    return p[k] != null ? p[k] : (packs[cfg.defaultLang][k] || k);
+    // Only the page's own pack is loaded, so there is no other pack to borrow from; test/dil.test.js keeps every pack complete.
+    return p[k] != null ? p[k] : k;
+  }
+
+  // packs is a plain object: packs["constructor"] is truthy, so ?lang=constructor used to blank the page.
+  function hasLang(c) {
+    return typeof c === "string" && Object.prototype.hasOwnProperty.call(packs, c);
   }
 
   function pathLang() {
     var m = location.pathname.match(/^\/([a-z]{2})\//);
-    return m && packs[m[1]] ? m[1] : null;
+    return m && hasLang(m[1]) ? m[1] : null;
   }
 
   function pickInitialLang() {
     var fromUrl = new URLSearchParams(location.search).get("lang");
-    if (fromUrl && packs[fromUrl]) return fromUrl;
+    if (hasLang(fromUrl)) return fromUrl;
     // /ar/, /nl/ ... are the crawlable per-language addresses; a shared link must open in its own language.
     var fromPath = pathLang();
     if (fromPath) return fromPath;
     try {
       var saved = localStorage.getItem("lang");
-      if (saved && packs[saved]) return saved;
+      if (hasLang(saved)) return saved;
     } catch (e) { /* storage blocked: fall through to browser language */ }
     // Walk the whole preference list: a phone set to German with Arabic second should get Arabic, not Turkish.
     var prefs = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || ""];
@@ -29,13 +35,18 @@
       var raw = String(prefs[i]).toLowerCase();
       // Kurmanji may be reported as "kmr"; a plain two-letter slice would read it as Khmer ("km").
       var code = raw.indexOf("kmr") === 0 ? "ku" : raw.slice(0, 2);
-      if (packs[code]) return code;
+      if (hasLang(code)) return code;
     }
     // A phone in a language we do not offer (German, Polish...) is far likelier to read English than Turkish.
     return packs.en ? "en" : cfg.defaultLang;
   }
 
   var WA_ICON = '<svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.3-.4.8-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></svg>';
+
+  // Only the size attributes change; the path data also contains "22" and must stay as drawn.
+  function sizedIcon(svg, px) {
+    return svg.replace(/ width="\d+" height="\d+"/, ' width="' + px + '" height="' + px + '"');
+  }
 
   var MAIL_ICON = '<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Zm1 2.4V17h16V7.4l-8 5.3-8-5.3ZM5.6 7 12 11.2 18.4 7H5.6Z"/></svg>';
 
@@ -49,13 +60,20 @@
   // Countries named in the services block; the last chip ("and anywhere in the world") comes from the language pack.
   var WORLD = ["NL", "TR", "DE", "BE", "FR", "GB", "SE", "AT", "CH", "IT", "ES", "US"];
 
-  var PREFILL = { lawyer: "wa_prefill_lawyer", biz: "wa_prefill_biz" };
-  var WA_LABEL = { lawyer: "lawyers_cta_wa", biz: "svc_btn" };
+  var CAL_ICON = '<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M7 2h2v2h6V2h2v2h3a1 1 0 0 1 1 1v15a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3V2Zm12 8H5v9h14v-9Z"/></svg>';
 
-  function waHref(kind) {
+  var PREFILL = { lawyer: "wa_prefill_lawyer", biz: "wa_prefill_biz" };
+  var WA_LABEL = { lawyer: "lawyers_cta_wa", biz: "svc_btn", dl: "dl_wa" };
+
+  function waHref(kind, text) {
     // The prefilled first line tells the owner which language the person reads and who is writing (person, lawyer, business).
     var digits = String(cfg.whatsapp).replace(/[^0-9]/g, "");
-    return "https://wa.me/" + digits + "?text=" + encodeURIComponent(t(PREFILL[kind] || "wa_prefill"));
+    return "https://wa.me/" + digits + "?text=" + encodeURIComponent(text || t(PREFILL[kind] || "wa_prefill"));
+  }
+
+  // An unknown placeholder stays visible instead of vanishing, so a broken translation shows up in the message.
+  function fill(tpl, vars) {
+    return String(tpl).replace(/\{(\w)\}/g, function (m, k) { return vars[k] != null ? vars[k] : m; });
   }
 
   function renderSocial() {
@@ -95,7 +113,7 @@
       var kind = box.getAttribute("data-contact");
       var lawyer = kind === "lawyer";
       if (kind === "fab") {
-        if (hasWa) { box.href = waHref(""); box.target = "_blank"; box.rel = "noopener noreferrer"; box.innerHTML = WA_ICON.replace(/22/g, "30"); }
+        if (hasWa) { box.href = waHref(""); box.target = "_blank"; box.rel = "noopener noreferrer"; box.innerHTML = sizedIcon(WA_ICON, 30); }
         else box.removeAttribute("href");
         return;
       }
@@ -134,10 +152,10 @@
     });
   }
 
-  function waLink(kind) {
+  function waLink(kind, text) {
     var wa = document.createElement("a");
     wa.className = "btn wa";
-    wa.href = waHref(kind);
+    wa.href = waHref(kind, text);
     wa.target = "_blank";
     wa.rel = "noopener noreferrer";
     wa.innerHTML = WA_ICON;
@@ -192,6 +210,7 @@
   var COUNTRY = document.getElementById("dl-country");
   var TYPE = document.getElementById("dl-type");
   var CUSTOM_WRAP = document.getElementById("dl-custom-wrap");
+  var CUSTOM_UNIT = document.getElementById("dl-custom-unit");
 
   function countryName(code) {
     var own = (packs[current] || {})["region_" + code];
@@ -199,11 +218,18 @@
     try { return new Intl.DisplayNames([current], { type: "region" }).of(code) || code; } catch (e) { return code; }
   }
 
-  function termLabel(term) {
+  function termAmount(term) {
     var base = term[2] === "m" ? (term[1] === 1 ? "dl_u_m1" : "dl_u_m") : "dl_u_" + term[2];
-    var form = term[1] === 2 ? base + "_two" : (term[1] >= 3 && term[1] <= 10 ? base + "_few" : null);
-    var unit = form && (packs[current] || {})[form] ? packs[current][form] : t(base);
-    return t("dl_t_" + term[0]) + " — " + term[1] + " " + unit;
+    var own = packs[current] || {};
+    // The Arabic dual is one word that already says "two" (يومان), so it stands without the numeral.
+    if (term[1] === 2 && own[base + "_two"]) return own[base + "_two"];
+    var form = term[1] >= 3 && term[1] <= 10 ? base + "_few" : null;
+    var unit = form && own[form] ? own[form] : t(base);
+    return term[1] + " " + unit;
+  }
+
+  function termLabel(term) {
+    return t("dl_t_" + term[0]) + " — " + termAmount(term);
   }
 
   function renderTypes(reset) {
@@ -212,8 +238,14 @@
     TYPE.innerHTML = "";
     (c ? c.t : []).forEach(function (term, i) { TYPE.appendChild(new Option(termLabel(term), String(i))); });
     TYPE.appendChild(new Option(t("dl_t_custom"), "custom"));
-    if (keep && [].some.call(TYPE.options, function (o) { return o.value === keep; })) TYPE.value = keep;
+    // Plural labels: Arabic has its 3-10 form for a list like this, the other packs only the plain one.
+    var unit = CUSTOM_UNIT.value || "d";
+    CUSTOM_UNIT.innerHTML = "";
+    ["d", "w", "m"].forEach(function (u) { CUSTOM_UNIT.appendChild(new Option((packs[current] || {})["dl_u_" + u + "_few"] || t("dl_u_" + u), u)); });
+    CUSTOM_UNIT.value = unit;
+    if (keep &&[].some.call(TYPE.options, function (o) { return o.value === keep; })) TYPE.value = keep;
     CUSTOM_WRAP.hidden = TYPE.value !== "custom";
+    syncDateLabel();
   }
 
   function renderCountries() {
@@ -262,40 +294,86 @@
     var term;
     if (TYPE.value === "custom") {
       var raw = document.getElementById("dl-custom").value.trim();
-      var n = /^\d{1,3}$/.test(raw) ? +raw : 0;
-      if (!(n >= 1 && n <= 400)) { out.textContent = t("dl_need_days"); return; }
-      term = ["custom", n, "d"];
+      var n = /^\d{1,3}$/.test(raw) ? +raw : 0, unit = CUSTOM_UNIT.value;
+      // Months are counted as months: "1 month" typed as 31 days ends after the real last day in a shorter month.
+      if (!/^[dwm]$/.test(unit) || !(n >= 1 && n <= (unit === "m" ? 24 : 400))) { out.textContent = t("dl_need_days"); return; }
+      term = ["custom", n, unit];
     } else term = c.t[+TYPE.value];
-    var end = window.Ulke.lastDay(window.Deadline, code, term, date);
-    if (!end) { out.textContent = t("dl_need_date"); return; }
+    var v = window.Ulke.verdict(window.Deadline, code, term, date, todayISO());
+    if (v.error) { out.textContent = t(v.error); return; }
     out.dataset.last = "1";
-    var left = window.Deadline.daysBetween(todayISO(), end);
+    v.top.forEach(function (n) { note(out, n[0], t(n[1])); });
     var line1 = document.createElement("div");
-    line1.textContent = t("dl_result") + " " + formatDate(end);
+    if (v.doubt) line1.className = "bad";
+    line1.textContent = t("dl_result") + " " + formatDate(v.end);
     var line2 = document.createElement("div");
-    if (left > 0) {
-      line2.className = left <= 3 ? "bad" : "good";
-      line2.textContent = t("dl_left") + " " + left;
-    } else if (left === 0) {
-      line2.className = "bad";
-      line2.textContent = t("dl_today");
-    } else {
-      line2.className = "bad";
-      line2.textContent = t("dl_expired");
-    }
+    line2.className = v.cls;
+    line2.textContent = v.state === "dl_left" ? t("dl_left") + " " + v.left : t(v.state);
     out.appendChild(line1);
     out.appendChild(line2);
-    if (term[3] && term[3].from === "k") note(out, "warn", t("dl_from_decision"));
-    note(out, "info", t("dl_st_" + c.st));
-    if (c.conf === "dusuk") note(out, "warn", t("dl_conf_low"));
+    // A21: the bare date cannot be checked against the decision; the rule it came from can.
+    note(out, "info", v.min ? fill(t("dl_basis_min"), { d: formatDate(date), a: termAmount(term), b: termAmount(["", v.min[0], v.min[1]]) })
+      : fill(t("dl_basis"), { d: formatDate(date), n: termAmount(term) }));
+    v.notes.forEach(function (n) { note(out, n[0], t(n[1])); });
+    out.appendChild(resultActions(code, term, date, v));
+  }
+
+  // The first message already carries country, term and both dates, so nobody has to type them again.
+  function resultActions(code, term, date, v) {
+    var box = document.createElement("div");
+    box.className = "dl-act";
+    if (cfg.whatsapp) {
+      box.appendChild(waLink("dl", fill(t("wa_prefill_dl"), { c: countryName(code), t: termLabel(term), d: formatDate(date), e: formatDate(v.end) })));
+    }
+    if (v.left >= 0) {
+      var b = document.createElement("button");
+      b.type = "button";
+      b.className = "btn ics";
+      b.innerHTML = CAL_ICON;
+      var s = document.createElement("span");
+      s.textContent = t("dl_ics");
+      b.appendChild(s);
+      b.addEventListener("click", function () { saveIcs(code, v.end); });
+      box.appendChild(b);
+    }
+    return box;
+  }
+
+  // Built on the phone itself: the date never reaches a server, as the trust section promises.
+  function saveIcs(code, end) {
+    var text = window.Deadline.icsEvent({
+      date: end,
+      uid: end + "-" + code.toLowerCase() + "@istinafy.com",
+      stamp: new Date().toISOString().replace(/[-:]/g, "").slice(0, 15) + "Z",
+      title: t("dl_ics_title") + " — " + countryName(code),
+      desc: t("dl_ics_desc") + "\n" + location.origin + "/" + current + "/"
+    });
+    var url = URL.createObjectURL(new Blob([text], { type: "text/calendar;charset=utf-8" }));
+    var a = document.createElement("a");
+    a.href = url;
+    a.download = "istinafy-" + end + ".ics";
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
+  }
+
+  // A term that runs from the decision date needs that date, not the day the letter arrived.
+  function syncDateLabel() {
+    var c = window.Ulke.countries[COUNTRY.value];
+    var term = c && TYPE.value !== "custom" ? c.t[+TYPE.value] : null;
+    var q = document.getElementById("dl-date-q");
+    q.setAttribute("data-i18n", term && term[3] && term[3].from === "k" ? "dl_date_k" : "dl_date");
+    q.textContent = t(q.getAttribute("data-i18n"));
   }
 
   COUNTRY.addEventListener("change", function () { renderTypes(true); });
-  TYPE.addEventListener("change", function () { CUSTOM_WRAP.hidden = TYPE.value !== "custom"; });
+  TYPE.addEventListener("change", function () { CUSTOM_WRAP.hidden = TYPE.value !== "custom"; syncDateLabel(); });
+  document.getElementById("dl-date").max = todayISO();
 
   var sel = document.getElementById("lang-select");
+  // From config, not from the loaded packs: this page carries one pack, and every listed language has its own page.
   cfg.languages.forEach(function (l) {
-    if (!packs[l.code]) return;
     var o = document.createElement("option");
     o.value = l.code;
     o.textContent = l.name;
@@ -338,15 +416,34 @@
   window.addEventListener("scroll", onScroll, { passive: true });
   onScroll();
 
-  var items = document.querySelectorAll(".rv");
-  if ("IntersectionObserver" in window) {
+  // On phones the fixed WhatsApp bar repeated the hero buttons on the first screen; it slides in once they scroll away.
+  // Without IntersectionObserver the class is never set and the bar simply stays.
+  var heroCta = document.querySelector(".hero-text .cta[data-contact]");
+  if ("IntersectionObserver" in window && heroCta) {
+    document.body.classList.add("cta-in");
+    new IntersectionObserver(function (en) {
+      document.body.classList.toggle("cta-in", en[en.length - 1].isIntersecting);
+    }).observe(heroCta);
+  }
+
+  // Audience cards and topics took 2,600 px on a phone; there they start folded, on wide screens open.
+  var wide = window.matchMedia("(min-width: 901px)").matches;
+  document.querySelectorAll("details[data-open-wide]").forEach(function (d) { d.open = wide; });
+
+  // Hiding starts only here, at the end of a run that worked; whatever is already on screen stays shown.
+  function startReveal() {
+    if (!("IntersectionObserver" in window)) return;
+    var items = [].filter.call(document.querySelectorAll(".rv"), function (el) {
+      if (el.getBoundingClientRect().top < window.innerHeight) { el.classList.add("in"); return false; }
+      return true;
+    });
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (en) {
         if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); }
       });
     }, { rootMargin: "0px 0px -8% 0px", threshold: 0.08 });
     items.forEach(function (el) { io.observe(el); });
-  } else {
-    items.forEach(function (el) { el.classList.add("in"); });
+    document.documentElement.classList.add("rv-on");
   }
+  startReveal();
 })();
