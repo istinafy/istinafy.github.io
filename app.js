@@ -57,7 +57,7 @@
         var a = document.createElement("a");
         a.href = s.url;
         a.target = "_blank";
-        a.rel = "noopener";
+        a.rel = "noopener noreferrer";
         a.setAttribute("aria-label", s.name);
         a.title = s.name;
         a.innerHTML = SOCIAL_ICONS[s.id] || "";
@@ -86,7 +86,7 @@
       var kind = box.getAttribute("data-contact");
       var lawyer = kind === "lawyer";
       if (kind === "fab") {
-        if (hasWa) { box.href = waHref(""); box.target = "_blank"; box.rel = "noopener"; box.innerHTML = WA_ICON.replace(/22/g, "30"); }
+        if (hasWa) { box.href = waHref(""); box.target = "_blank"; box.rel = "noopener noreferrer"; box.innerHTML = WA_ICON.replace(/22/g, "30"); }
         else box.removeAttribute("href");
         return;
       }
@@ -130,7 +130,7 @@
     wa.className = "btn wa";
     wa.href = waHref(kind);
     wa.target = "_blank";
-    wa.rel = "noopener";
+    wa.rel = "noopener noreferrer";
     wa.innerHTML = WA_ICON;
     var s = document.createElement("span");
     s.textContent = t(WA_LABEL[kind] || "cta_whatsapp");
