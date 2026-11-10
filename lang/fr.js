@@ -1,6 +1,6 @@
 window.I18N = window.I18N || {};
 window.I18N.fr = {
-  page_title: "Requête en recours — Nous faisons appel",
+  page_title: "Recours contre votre décision d'asile | ISTINAFY",
   lang_label: "Langue",
   nav_how: "Comment ça marche",
   nav_deadline: "Délai",

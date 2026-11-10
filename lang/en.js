@@ -1,6 +1,6 @@
 window.I18N = window.I18N || {};
 window.I18N.en = {
-  page_title: "Appeal Petition — We will appeal",
+  page_title: "Appeal against your asylum decision | ISTINAFY",
   lang_label: "Language",
   nav_how: "How it works",
   nav_deadline: "Deadline",

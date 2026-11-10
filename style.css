@@ -379,3 +379,17 @@ details p { margin: 0 0 24px; color: var(--muted); }
   .btn, .card, .price-card, .social a, .dl button { transition: none; }
   .js .rv { opacity: 1; transform: none; transition: none; }
 }
+
+/* Generated country deadline pages (site-uret.js) */
+.cp .block { padding: 56px 0 80px; }
+.cp-h1 { margin: 0 0 22px; font: 600 clamp(28px, 4.2vw, 44px)/1.15 var(--serif); letter-spacing: -.01em; }
+.cp-table-wrap { overflow-x: auto; margin: 26px 0 8px; }
+.cp-table { width: 100%; border-collapse: collapse; font-size: 16px; }
+.cp-table th, .cp-table td { padding: 12px 14px; border-bottom: 1px solid var(--line); text-align: start; vertical-align: top; }
+.cp-table th { color: var(--gold); font: 700 12px var(--head); letter-spacing: .14em; text-transform: uppercase; }
+.cp-table td + td { white-space: nowrap; font-weight: 700; color: var(--gold-3); }
+.cp-warn { color: var(--gold-3); font-weight: 600; }
+.cp-links { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; }
+.cp-links a { display: inline-block; padding: 6px 13px; border-radius: 999px; border: 1px solid var(--line); background: rgba(201, 164, 92, .05); color: var(--muted); font-size: 14px; text-decoration: none; }
+.cp-links a:hover { border-color: var(--gold); color: var(--gold-3); }
+.cp .h2-gap { margin-top: 56px; margin-bottom: 18px; font-size: clamp(22px, 3vw, 30px); }

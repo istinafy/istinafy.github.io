@@ -8,9 +8,17 @@
     return p[k] != null ? p[k] : (packs[cfg.defaultLang][k] || k);
   }
 
+  function pathLang() {
+    var m = location.pathname.match(/^\/([a-z]{2})\//);
+    return m && packs[m[1]] ? m[1] : null;
+  }
+
   function pickInitialLang() {
     var fromUrl = new URLSearchParams(location.search).get("lang");
     if (fromUrl && packs[fromUrl]) return fromUrl;
+    // /ar/, /nl/ ... are the crawlable per-language addresses; a shared link must open in its own language.
+    var fromPath = pathLang();
+    if (fromPath) return fromPath;
     try {
       var saved = localStorage.getItem("lang");
       if (saved && packs[saved]) return saved;
@@ -153,6 +161,7 @@
     renderContacts();
     renderCountries();
     renderWorld();
+    renderCountryLinks();
     MENU_BTN.setAttribute("aria-label", t("nav_menu"));
     var out = document.getElementById("dl-out");
     if (out.dataset.last) calc();
@@ -190,7 +199,9 @@
   }
 
   function termLabel(term) {
-    var unit = term[2] === "m" ? t(term[1] === 1 ? "dl_u_m1" : "dl_u_m") : t("dl_u_" + term[2]);
+    var base = term[2] === "m" ? (term[1] === 1 ? "dl_u_m1" : "dl_u_m") : "dl_u_" + term[2];
+    var form = term[1] === 2 ? base + "_two" : (term[1] >= 3 && term[1] <= 10 ? base + "_few" : null);
+    var unit = form && (packs[current] || {})[form] ? packs[current][form] : t(base);
     return t("dl_t_" + term[0]) + " — " + term[1] + " " + unit;
   }
 
@@ -217,6 +228,20 @@
     codes.forEach(function (c) { COUNTRY.appendChild(new Option(names[c], c)); });
     COUNTRY.value = keep;
     renderTypes(false);
+  }
+
+  function renderCountryLinks() {
+    document.querySelectorAll("[data-country-links]").forEach(function (ul) {
+      ul.innerHTML = "";
+      [].slice.call(COUNTRY.options, 1).forEach(function (o) {
+        var li = document.createElement("li");
+        var a = document.createElement("a");
+        a.href = "/" + current + "/" + o.value.toLowerCase() + "/";
+        a.textContent = o.text;
+        li.appendChild(a);
+        ul.appendChild(li);
+      });
+    });
   }
 
   function note(out, cls, text) {
@@ -275,7 +300,12 @@
     o.textContent = l.name;
     sel.appendChild(o);
   });
-  sel.addEventListener("change", function () { apply(sel.value); });
+  sel.addEventListener("change", function () {
+    apply(sel.value);
+    if (location.pathname === "/" || pathLang()) {
+      try { history.replaceState(null, "", "/" + sel.value + "/" + location.hash); } catch (e) { /* address stays; page already switched */ }
+    }
+  });
   document.getElementById("dl-form").addEventListener("submit", function (e) {
     e.preventDefault();
     calc();
@@ -296,6 +326,9 @@
   var initial = pickInitialLang();
   sel.value = initial;
   apply(initial);
+  // Country pages link here with ?c=XX so the calculator opens on that country.
+  var preCountry = (new URLSearchParams(location.search).get("c") || "").toUpperCase();
+  if (window.Ulke.countries[preCountry]) { COUNTRY.value = preCountry; renderTypes(true); }
 
   function onScroll() { hdr.classList.toggle("scrolled", window.scrollY > 12); }
   window.addEventListener("scroll", onScroll, { passive: true });

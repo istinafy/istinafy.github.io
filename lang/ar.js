@@ -1,6 +1,6 @@
 window.I18N = window.I18N || {};
 window.I18N.ar = {
-  page_title: "مذكرة الطعن — نحن نقدّم الطعن",
+  page_title: "طعن في قرار اللجوء — مذكرة طعن جاهزة | ISTINAFY",
   lang_label: "اللغة",
   nav_how: "كيف نعمل",
   nav_deadline: "حساب المهلة",
@@ -167,6 +167,11 @@ window.I18N.ar = {
   dl_t_custom: "قراري يذكر مهلة مختلفة",
   dl_u_d: "يوماً",
   dl_u_w: "يوم عمل",
+  // Arabic counted nouns: 3-10 take the plural, 2 the short form; 11+ keeps dl_u_d / dl_u_w.
+  dl_u_d_few: "أيام",
+  dl_u_d_two: "يوم",
+  dl_u_w_few: "أيام عمل",
+  dl_u_w_two: "يوم عمل",
   dl_u_m1: "شهر",
   dl_u_m: "أشهر",
   dl_st_self: "في هذا البلد يمكنك عادةً تقديم الطعن بنفسك، من دون محامٍ.",

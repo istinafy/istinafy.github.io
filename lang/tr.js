@@ -1,6 +1,6 @@
 window.I18N = window.I18N || {};
 window.I18N.tr = {
-  page_title: "İtiraz Dilekçesi — Biz itiraz ederiz",
+  page_title: "İltica ret kararına itiraz dilekçesi | ISTINAFY",
   lang_label: "Dil",
   nav_how: "Nasıl çalışır",
   nav_deadline: "Süre hesapla",

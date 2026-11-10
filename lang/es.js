@@ -1,6 +1,6 @@
 window.I18N = window.I18N || {};
 window.I18N.es = {
-  page_title: "Recurso de apelación — Nosotros apelamos",
+  page_title: "Recurso contra su resolución de asilo | ISTINAFY",
   lang_label: "Idioma",
   nav_how: "Cómo funciona",
   nav_deadline: "Plazo",

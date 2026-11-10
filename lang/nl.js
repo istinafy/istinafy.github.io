@@ -1,6 +1,6 @@
 window.I18N = window.I18N || {};
 window.I18N.nl = {
-  page_title: "Beroepschrift — Wij gaan in beroep",
+  page_title: "Beroepschrift tegen uw asielbesluit | ISTINAFY",
   lang_label: "Taal",
   nav_how: "Hoe het werkt",
   nav_deadline: "Termijn",

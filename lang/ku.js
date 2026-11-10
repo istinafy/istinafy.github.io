@@ -1,6 +1,6 @@
 window.I18N = window.I18N || {};
 window.I18N.ku = {
-  page_title: "Daxwaznameya Îtirazê — Em îtiraz dikin",
+  page_title: "Daxwaznameya îtirazê li dijî biryara penaberiyê | ISTINAFY",
   lang_label: "Ziman",
   nav_how: "Çawa dixebite",
   nav_deadline: "Hesabkirina mohletê",
