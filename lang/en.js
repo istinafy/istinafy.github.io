@@ -175,6 +175,7 @@ window.I18N.en = {
   dl_st_auto: "In this country a rejection usually goes to the appeal board automatically. For short deadlines such as Dublin, still keep track of the date.",
   dl_st_unclear: "It could not be fully confirmed whether you can file the appeal yourself in this country. Follow the instructions in your decision and write to us at once.",
   dl_conf_low: "The rules for this country were confirmed with low confidence; the result shows the earliest possible day.",
+  dl_from_decision: "This term may run from the date on the decision (the day it was issued or sent), not from the day it reached you. Enter the decision date and calculate again.",
   nav_price: "Price",
   nav_menu: "Menu",
   hero_price: "Roadmap free · Petition 149 €",

@@ -175,6 +175,7 @@ window.I18N.es = {
   dl_st_auto: "En este país la denegación suele pasar automáticamente al órgano de recurso. En plazos cortos como Dublín, vigile igualmente la fecha.",
   dl_st_unclear: "No se ha podido confirmar del todo si en este país puede recurrir usted mismo. Siga las instrucciones de su resolución y escríbanos enseguida.",
   dl_conf_low: "Las normas de este país se confirmaron con baja certeza; el resultado muestra el día más temprano posible.",
+  dl_from_decision: "Este plazo puede contar desde la fecha que figura en la resolución (el día en que se dictó o se envió), no desde el día en que la recibió. Introduzca la fecha de la resolución y vuelva a calcular.",
   nav_price: "Precio",
   nav_menu: "Menú",
   hero_price: "Hoja de ruta gratis · Recurso 149 €",

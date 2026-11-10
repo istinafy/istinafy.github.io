@@ -175,6 +175,7 @@ window.I18N.tr = {
   dl_st_auto: "Bu ülkede ret kararı çoğu durumda kendiliğinden itiraz kuruluna gider. Dublin gibi kısa süreli kararlarda yine de tarihi takip edin.",
   dl_st_unclear: "Bu ülkede itirazı kendiniz gönderip gönderemeyeceğiniz tam doğrulanamadı. Kararınızdaki talimatı esas alın ve hemen yazın.",
   dl_conf_low: "Bu ülkenin kuralları düşük güvenle doğrulandı; sonuç en erken olası günü gösterir.",
+  dl_from_decision: "Bu süre, kararın size ulaştığı günden değil, kararın üzerindeki tarihten (verildiği veya gönderildiği gün) başlayabilir. Kararın tarihini girip yeniden hesaplayın.",
   nav_price: "Ücret",
   nav_menu: "Menü",
   hero_price: "Yol haritası ücretsiz · Dilekçe 149 €",

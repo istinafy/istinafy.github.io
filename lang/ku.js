@@ -175,6 +175,7 @@ window.I18N.ku = {
   dl_st_auto: "Li vî welatî biryara redkirinê di piraniya rewşan de bi xweber diçe desteya îtirazê. Di biryarên bi mohleta kurt ên wek Dublinê de dîsa jî dîrokê bişopînin.",
   dl_st_unclear: "Bi temamî nehat piştrastkirin ka hûn li vî welatî dikarin îtirazê bi xwe bişînin an na. Talîmata di biryara xwe de bingeh bigirin û tavilê binivîsin.",
   dl_conf_low: "Qaîdeyên vî welatî bi ewlehiyeke kêm hatine piştrastkirin; encam roja herî zû ya mimkun nîşan dide.",
+  dl_from_decision: "Dibe ku ev mohlet ne ji roja ku biryar gihîştiye we, lê ji dîroka li ser biryarê (roja ku hatiye dayîn an şandin) dest pê bike. Dîroka biryarê binivîsin û dîsa hesab bikin.",
   nav_price: "Biha",
   nav_menu: "Menû",
   hero_price: "Nexşeya rê belaş · Daxwazname 149 €",

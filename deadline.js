@@ -49,7 +49,8 @@
     var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(s || "");
     if (!m) return null;
     var d = new Date(Date.UTC(+m[1], +m[2] - 1, +m[3]));
-    return isNaN(d.getTime()) ? null : d;
+    // Date.UTC rolls 2026-02-30 over to March; a typed impossible date must be rejected, not moved.
+    return isNaN(d.getTime()) || key(d) !== s ? null : d;
   }
 
   function lastDay(notifiedISO, termDays) {

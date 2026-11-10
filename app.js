@@ -235,12 +235,14 @@
     if (!date) { out.textContent = t("dl_need_date"); return; }
     var term;
     if (TYPE.value === "custom") {
-      var n = parseInt(document.getElementById("dl-custom").value, 10);
-      if (!(n > 0)) { out.textContent = t("dl_need_days"); return; }
+      var raw = document.getElementById("dl-custom").value.trim();
+      var n = /^\d{1,3}$/.test(raw) ? +raw : 0;
+      if (!(n >= 1 && n <= 400)) { out.textContent = t("dl_need_days"); return; }
       term = ["custom", n, "d"];
     } else term = c.t[+TYPE.value];
-    out.dataset.last = "1";
     var end = window.Ulke.lastDay(window.Deadline, code, term, date);
+    if (!end) { out.textContent = t("dl_need_date"); return; }
+    out.dataset.last = "1";
     var left = window.Deadline.daysBetween(todayISO(), end);
     var line1 = document.createElement("div");
     line1.textContent = t("dl_result") + " " + formatDate(end);
@@ -257,6 +259,7 @@
     }
     out.appendChild(line1);
     out.appendChild(line2);
+    if (term[3] && term[3].from === "k") note(out, "warn", t("dl_from_decision"));
     note(out, "info", t("dl_st_" + c.st));
     if (c.conf === "dusuk") note(out, "warn", t("dl_conf_low"));
   }

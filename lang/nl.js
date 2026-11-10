@@ -175,6 +175,7 @@ window.I18N.nl = {
   dl_st_auto: "In dit land gaat een afwijzing meestal automatisch naar de beroepsinstantie. Let bij korte termijnen zoals Dublin toch op de datum.",
   dl_st_unclear: "Niet volledig bevestigd is of u in dit land zelf beroep kunt instellen. Volg de instructies in uw beslissing en schrijf ons meteen.",
   dl_conf_low: "De regels voor dit land zijn met weinig zekerheid bevestigd; de uitkomst toont de vroegst mogelijke dag.",
+  dl_from_decision: "Deze termijn kan lopen vanaf de datum op de beslissing (de dag van afgifte of verzending), niet vanaf de dag dat u hem ontving. Vul de datum van de beslissing in en bereken opnieuw.",
   nav_price: "Prijs",
   nav_menu: "Menu",
   hero_price: "Stappenplan gratis · Beroepschrift 149 €",

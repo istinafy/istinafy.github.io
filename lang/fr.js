@@ -175,6 +175,7 @@ window.I18N.fr = {
   dl_st_auto: "Dans ce pays, un rejet est le plus souvent transmis automatiquement à l'instance de recours. Pour les délais courts comme Dublin, surveillez quand même la date.",
   dl_st_unclear: "Il n'a pas pu être entièrement confirmé que vous pouvez déposer le recours vous-même dans ce pays. Suivez les instructions de votre décision et écrivez-nous tout de suite.",
   dl_conf_low: "Les règles de ce pays ont été confirmées avec une faible certitude ; le résultat indique le jour le plus tôt possible.",
+  dl_from_decision: "Ce délai peut courir à partir de la date figurant sur la décision (jour où elle a été rendue ou envoyée), et non du jour où vous l'avez reçue. Saisissez la date de la décision et recalculez.",
   nav_price: "Tarif",
   nav_menu: "Menu",
   hero_price: "Feuille de route gratuite · Requête 149 €",
