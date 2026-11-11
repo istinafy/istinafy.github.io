@@ -51,6 +51,7 @@ window.I18N.nl = {
   law_3: "Om uitzetting te voorkomen kan ook een voorlopige voorziening worden gevraagd (Algemene wet bestuursrecht, artikel 8:81).",
   law_4: "Elke uitspraak (ECLI-nummer) die in het beroepschrift wordt gebruikt, wordt één voor één gecontroleerd in de officiële bronnen (rechtspraak.nl, raadvanstate.nl).",
   law_other: "De termijnen van andere landen staan op de landpagina's.",
+  law_more: "Alle wetsartikelen en gecontroleerde uitspraken",
 
   europe_title: "Vanuit heel Europa",
   europe_d: "In welk land u ook bent, schrijf ons. Wij helpen u volgens de regels van uw land en uw rechtbank.",

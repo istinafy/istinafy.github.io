@@ -51,6 +51,7 @@ window.I18N.en = {
   law_3: "To stop a removal, interim measures (voorlopige voorziening) can also be requested (General Administrative Law Act, Awb article 8:81).",
   law_4: "Every court ruling (ECLI number) used in the appeal letter is checked one by one in the official sources (rechtspraak.nl, raadvanstate.nl).",
   law_other: "The deadlines for other countries are on the country pages.",
+  law_more: "All law articles and verified court rulings",
 
   europe_title: "From anywhere in Europe",
   europe_d: "Whatever country you are in, write to us. We guide you according to your country and your court.",

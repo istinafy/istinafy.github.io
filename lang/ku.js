@@ -51,6 +51,7 @@ window.I18N.ku = {
   law_3: "Ji bo rawestandina dersînorkirinê, herwiha dikare tedbîra lezgîn (voorlopige voorziening) were xwestin (Qanûna Giştî ya Hiqûqa Îdarî, Awb xala 8:81).",
   law_4: "Her biryara dadgehê (hejmara ECLI) ya ku di daxwaznameyê de tê bikaranîn, di çavkaniya fermî de (rechtspraak.nl, raadvanstate.nl) yek bi yek tê kontrolkirin.",
   law_other: "Mohletên welatên din di rûpelên welatan de ne.",
+  law_more: "Hemû xalên qanûnê û biryarên dadgehê yên piştrastkirî",
 
   europe_title: "Ji her derê Ewropayê",
   europe_d: "Hûn li kîjan welatî bin jî, ji me re binivîsin. Em li gorî welat û dadgeha we rê nîşanî we didin.",

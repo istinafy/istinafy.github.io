@@ -51,6 +51,7 @@ window.I18N.es = {
   law_3: "Para detener una expulsión también se pueden pedir medidas cautelares (voorlopige voorziening) (Ley General de Derecho Administrativo, Awb artículo 8:81).",
   law_4: "Cada sentencia (número ECLI) usada en el recurso se comprueba una por una en las fuentes oficiales (rechtspraak.nl, raadvanstate.nl).",
   law_other: "Los plazos de los demás países están en las páginas de cada país.",
+  law_more: "Todos los artículos de ley y las sentencias verificadas",
 
   europe_title: "Desde cualquier lugar de Europa",
   europe_d: "Esté en el país que esté, escríbanos. Le orientamos según su país y su tribunal.",

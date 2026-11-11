@@ -425,6 +425,9 @@ details p { margin: 0 0 24px; color: var(--muted); }
   .cp-facts dd { padding: 12px 0; }
 }
 .cp-src a { overflow-wrap: anywhere; }
+.cp-law { display: block; margin-top: 6px; font-size: 14px; }
+.cp-law a { display: inline-block; margin-inline-end: 12px; overflow-wrap: anywhere; color: var(--gold-3); }
+.law-more { display: inline-block; color: var(--gold-3); font-weight: 600; }
 
 /* Root language chooser (site/index.html); JS visitors are sent on by kok.js before it paints */
 .kok-list { list-style: none; display: grid; gap: 12px; margin: 0; padding: 0; }

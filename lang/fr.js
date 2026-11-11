@@ -51,6 +51,7 @@ window.I18N.fr = {
   law_3: "Pour empêcher un éloignement, des mesures provisoires (voorlopige voorziening) peuvent aussi être demandées (loi générale sur le droit administratif, Awb article 8:81).",
   law_4: "Chaque décision de justice (numéro ECLI) citée dans la requête est vérifiée une par une dans les sources officielles (rechtspraak.nl, raadvanstate.nl).",
   law_other: "Les délais des autres pays figurent sur les pages pays.",
+  law_more: "Tous les articles de loi et les décisions de justice vérifiées",
 
   europe_title: "Depuis toute l'Europe",
   europe_d: "Quel que soit votre pays, écrivez-nous. Nous vous guidons selon votre pays et votre tribunal.",

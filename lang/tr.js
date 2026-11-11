@@ -51,6 +51,7 @@ window.I18N.tr = {
   law_3: "Sınır dışı edilmeyi durdurmak için ayrıca acil tedbir (voorlopige voorziening) istenebilir (Genel İdare Hukuku Kanunu, Awb md. 8:81).",
   law_4: "Dilekçede kullanılan her mahkeme kararı (ECLI numarası) resmî kaynakta (rechtspraak.nl, raadvanstate.nl) tek tek kontrol edilir.",
   law_other: "Diğer ülkelerin süreleri ülke sayfalarında.",
+  law_more: "Tüm yasa maddeleri ve doğrulanmış mahkeme kararları",
 
   europe_title: "Avrupa'nın her yerinden",
   europe_d: "Hangi ülkede olursanız olun bize yazın. Ülkenize ve mahkemenize göre yol gösteriyoruz.",
