@@ -338,8 +338,15 @@ details p { margin: 0 0 24px; color: var(--muted); }
 }
 
 /* Six nav links plus language and CTA need ~1120px in French/Spanish; below that the menu button takes over. */
-/* 1399, not 1200: with the 7th menu item (nav_law, 11.11) the Kurdish row needs 1352px; below that the CTA left the screen. */
-@media (max-width: 1399px) {
+/* With the 7th menu item (nav_law, 11.11) the Kurdish row needs 1352px at full size: 1280-1399px gets a tighter row, below 1280 the menu button. */
+@media (min-width: 1280px) and (max-width: 1399px) {
+  .top-row { gap: 14px; }
+  .nav { gap: 14px; }
+  .nav a { font-size: 14px; }
+  .lang select { padding: 7px 8px; }
+  .hdr-cta { padding: 10px 14px; }
+}
+@media (max-width: 1279px) {
   .menu-btn { display: grid; }
   .nav { display: none; position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; gap: 0; padding: 8px 24px 18px; background: rgba(9, 14, 26, .97); border-bottom: 1px solid var(--line); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); }
   .menu-open .nav { display: flex; }
