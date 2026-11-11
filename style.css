@@ -52,10 +52,10 @@ a { color: var(--gold-2); }
 .top.scrolled { background: rgba(9, 14, 26, .9); border-bottom-color: var(--line); }
 .top-row { display: flex; align-items: center; gap: 22px; height: 72px; transition: height .25s; }
 .brand { display: inline-flex; align-items: center; gap: 12px; min-height: 44px; text-decoration: none; color: var(--ivory); flex: none; }
-.brand img { display: block; border-radius: 11px; box-shadow: 0 6px 18px rgba(0, 0, 0, .35); }
+.brand img { display: block; }
 .brand-txt { display: grid; line-height: 1.05; }
 .word { font-family: var(--serif); font-weight: 600; font-size: 22px; letter-spacing: .2em; }
-.word b { color: var(--gold); font-weight: 600; }
+.word b { color: inherit; font-weight: 600; }
 .tag { margin-top: 3px; font: 600 10px var(--head); letter-spacing: .26em; text-transform: uppercase; color: var(--gold); opacity: .9; }
 .nav { display: flex; gap: 26px; flex: 1; justify-content: center; }
 .nav a { position: relative; color: var(--muted); text-decoration: none; font-size: 15px; white-space: nowrap; transition: color .2s; }
@@ -115,8 +115,9 @@ a { color: var(--gold-2); }
 @keyframes float1 { 50% { transform: rotate(-5deg) translateY(-8px); } }
 @keyframes float2 { 50% { transform: rotate(3deg) translateY(6px); } }
 .sign { position: absolute; bottom: 42px; inset-inline-start: 18px; width: 120px; height: 38px; }
-.seal { position: absolute; bottom: 22px; inset-inline-end: 20px; width: 64px; height: 64px; padding: 5px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, var(--gold-3), #A9813A); box-shadow: 0 8px 18px rgba(0, 0, 0, .3); }
-.seal img { display: block; width: 100%; height: 100%; border-radius: 50%; }
+/* The notary seal pressed in the signature's ink: tilted and slightly translucent like a real stamp. */
+.seal { position: absolute; bottom: 18px; inset-inline-end: 16px; width: 84px; height: 84px; transform: rotate(-14deg); opacity: .86; mix-blend-mode: multiply; }
+.seal img { display: block; width: 100%; height: 100%; }
 
 .stats { list-style: none; position: relative; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin: 64px 0 0; padding: 0; border: 1px solid var(--line); border-radius: var(--r); background: rgba(17, 26, 46, .6); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
 .stats li { display: grid; gap: 4px; padding: 22px 24px; }
@@ -237,7 +238,7 @@ details p { margin: 0 0 24px; color: var(--muted); }
 /* Final call */
 .final { position: relative; padding: 110px 0; text-align: center; overflow: hidden; border-top: 1px solid var(--line);
   background: radial-gradient(60% 80% at 50% 100%, rgba(201, 164, 92, .2), transparent 70%), linear-gradient(180deg, var(--bg), #0A1222); }
-.final-in img { display: block; margin: 0 auto 26px; border-radius: 16px; box-shadow: 0 16px 40px rgba(0, 0, 0, .45); }
+.final-in img { display: block; margin: 0 auto 26px; filter: drop-shadow(0 14px 30px rgba(0, 0, 0, .45)); }
 .final h2 { margin: 0 auto 14px; font-size: clamp(34px, 5vw, 56px); color: var(--gold-3); }
 .final p { margin: 0 auto; max-width: 620px; color: var(--muted); font-size: 19px; }
 .final .addr { margin-top: 18px; font-size: 15px; color: var(--dim); }
@@ -353,7 +354,7 @@ details p { margin: 0 0 24px; color: var(--muted); }
   .li { margin-bottom: 10px; }
   .date-chip { margin-bottom: 12px; font-size: 11px; }
   .sign { width: 96px; bottom: 34px; }
-  .seal { width: 50px; height: 50px; bottom: 16px; }
+  .seal { width: 64px; height: 64px; bottom: 14px; }
   .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: 44px; }
   .stats li:nth-child(3) { border-inline-start: 0; }
   .stats li:nth-child(n+3) { border-top: 1px solid var(--line); }

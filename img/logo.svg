@@ -1,25 +1,30 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
-  <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#1B2844"/>
-      <stop offset="1" stop-color="#0A101D"/>
-    </linearGradient>
-    <linearGradient id="gold" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#F1DBA6"/>
-      <stop offset=".55" stop-color="#C9A45C"/>
-      <stop offset="1" stop-color="#A27D3B"/>
-    </linearGradient>
-    <linearGradient id="ivory" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#FFFFFF"/>
-      <stop offset="1" stop-color="#E9E0CF"/>
-    </linearGradient>
-  </defs>
-  <rect width="512" height="512" rx="112" fill="url(#bg)"/>
-  <rect x="14" y="14" width="484" height="484" rx="100" fill="none" stroke="#C9A45C" stroke-opacity=".42" stroke-width="4"/>
-  <!-- court building; the central column breaks through the roof as an upward arrow = appeal to a higher court -->
-  <path d="M128 232 L256 128 L384 232" fill="none" stroke="url(#gold)" stroke-width="30" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M176 276 V364 M336 276 V364" stroke="url(#ivory)" stroke-width="28" stroke-linecap="round"/>
-  <path d="M256 364 V196" stroke="url(#ivory)" stroke-width="28" stroke-linecap="round"/>
-  <path d="M212 236 L256 192 L300 236" fill="none" stroke="url(#ivory)" stroke-width="28" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M132 404 H380" stroke="url(#gold)" stroke-width="24" stroke-linecap="round"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <circle cx="50" cy="50" r="46" fill="none" stroke="#C9A45C" stroke-width="4"/>
+  <circle cx="50" cy="50" r="35" fill="none" stroke="#C9A45C" stroke-width="2.2"/>
+  <circle cx="55.29" cy="9.85" r="1.7" fill="#C9A45C"/>
+  <circle cx="65.50" cy="12.58" r="1.7" fill="#C9A45C"/>
+  <circle cx="74.65" cy="17.87" r="1.7" fill="#C9A45C"/>
+  <circle cx="82.13" cy="25.35" r="1.7" fill="#C9A45C"/>
+  <circle cx="87.42" cy="34.50" r="1.7" fill="#C9A45C"/>
+  <circle cx="90.15" cy="44.71" r="1.7" fill="#C9A45C"/>
+  <circle cx="90.15" cy="55.29" r="1.7" fill="#C9A45C"/>
+  <circle cx="87.42" cy="65.50" r="1.7" fill="#C9A45C"/>
+  <circle cx="82.13" cy="74.65" r="1.7" fill="#C9A45C"/>
+  <circle cx="74.65" cy="82.13" r="1.7" fill="#C9A45C"/>
+  <circle cx="65.50" cy="87.42" r="1.7" fill="#C9A45C"/>
+  <circle cx="55.29" cy="90.15" r="1.7" fill="#C9A45C"/>
+  <circle cx="44.71" cy="90.15" r="1.7" fill="#C9A45C"/>
+  <circle cx="34.50" cy="87.42" r="1.7" fill="#C9A45C"/>
+  <circle cx="25.35" cy="82.13" r="1.7" fill="#C9A45C"/>
+  <circle cx="17.87" cy="74.65" r="1.7" fill="#C9A45C"/>
+  <circle cx="12.58" cy="65.50" r="1.7" fill="#C9A45C"/>
+  <circle cx="9.85" cy="55.29" r="1.7" fill="#C9A45C"/>
+  <circle cx="9.85" cy="44.71" r="1.7" fill="#C9A45C"/>
+  <circle cx="12.58" cy="34.50" r="1.7" fill="#C9A45C"/>
+  <circle cx="17.87" cy="25.35" r="1.7" fill="#C9A45C"/>
+  <circle cx="25.35" cy="17.87" r="1.7" fill="#C9A45C"/>
+  <circle cx="34.50" cy="12.58" r="1.7" fill="#C9A45C"/>
+  <circle cx="44.71" cy="9.85" r="1.7" fill="#C9A45C"/>
+  <path d="M37 50 L50 37 L63 50" fill="none" stroke="#C9A45C" stroke-width="6.5" stroke-linecap="square"/>
+  <path d="M37 63 L50 50 L63 63" fill="none" stroke="#C9A45C" stroke-width="6.5" stroke-linecap="square"/>
 </svg>
