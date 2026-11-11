@@ -66,6 +66,7 @@ window.I18N.ku = {
   meta_desc: "Daxwaznameya îtirazê li dijî biryara we ya penaberiyê: nexşeya rê bi zimanê we + daxwaznameya amade ji bo dadgehê. Li her welatê Ewropayê.",
   nav_pact: "Qaîdeyên nû",
   nav_faq: "Pirs",
+  nav_law: "Bingeha hiqûqî",
   chip_1: "Algorîtmayên pêşketî",
   chip_2: "Gelek zû",
   chip_3: "Gelek berfireh",

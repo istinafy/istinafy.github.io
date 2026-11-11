@@ -66,6 +66,7 @@ window.I18N.en = {
   meta_desc: "Appeal against your asylum decision: a roadmap in your language + an appeal ready for the court. In any country in Europe.",
   nav_pact: "New rules",
   nav_faq: "Questions",
+  nav_law: "Legal basis",
   chip_1: "Advanced algorithms",
   chip_2: "Very fast",
   chip_3: "Very thorough",

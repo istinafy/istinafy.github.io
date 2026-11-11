@@ -66,6 +66,7 @@ window.I18N.fr = {
   meta_desc: "Recours contre votre décision d'asile : feuille de route dans votre langue + recours prêt pour le tribunal. Dans tous les pays d'Europe.",
   nav_pact: "Nouvelles règles",
   nav_faq: "Questions",
+  nav_law: "Base juridique",
   chip_1: "Algorithmes avancés",
   chip_2: "Très rapide",
   chip_3: "Très complet",

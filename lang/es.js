@@ -66,6 +66,7 @@ window.I18N.es = {
   meta_desc: "Recurso contra su resolución de asilo: hoja de ruta en su idioma + recurso listo para el tribunal. En cualquier país de Europa.",
   nav_pact: "Nuevas normas",
   nav_faq: "Preguntas",
+  nav_law: "Base legal",
   chip_1: "Algoritmos avanzados",
   chip_2: "Muy rápido",
   chip_3: "Muy completo",

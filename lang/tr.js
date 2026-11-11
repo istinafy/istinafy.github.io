@@ -66,6 +66,7 @@ window.I18N.tr = {
   meta_desc: "İltica ret kararınıza itiraz dilekçesi: kendi dilinizde yol haritası (son gününüz, mahkeme ve adres) + mahkemeye hazır dilekçe. Avrupa'nın her ülkesi.",
   nav_pact: "Yeni kurallar",
   nav_faq: "Sorular",
+  nav_law: "Hukuki dayanak",
   chip_1: "Üst düzey algoritmalar",
   chip_2: "Çok hızlı",
   chip_3: "Çok kapsamlı",

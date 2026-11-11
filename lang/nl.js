@@ -66,6 +66,7 @@ window.I18N.nl = {
   meta_desc: "Beroep tegen uw asielbesluit: een stappenplan in uw taal + een beroepschrift klaar voor de rechtbank. In elk land van Europa.",
   nav_pact: "Nieuwe regels",
   nav_faq: "Vragen",
+  nav_law: "Juridische basis",
   chip_1: "Geavanceerde algoritmes",
   chip_2: "Zeer snel",
   chip_3: "Zeer volledig",
