@@ -6,7 +6,9 @@
   function t(k) {
     var p = packs[current] || {};
     // Only the page's own pack is loaded, so there is no other pack to borrow from; test/dil.test.js keeps every pack complete.
-    return p[k] != null ? p[k] : k;
+    var v = p[k] != null ? p[k] : k;
+    // French no-break spaces, as frSpaces in site-uret.js gives the built page: "»", ":" and "?" stay on their word's line.
+    return current === "fr" && typeof v === "string" ? v.replace(/ (?=[:;?!»])/g, "\u00A0").replace(/« /g, "«\u00A0") : v;
   }
 
   // packs is a plain object: packs["constructor"] is truthy, so ?lang=constructor used to blank the page.
