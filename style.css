@@ -60,13 +60,13 @@ a { color: var(--gold-2); }
 .word b { color: inherit; font-weight: 600; }
 .tag { margin-top: 3px; font: 600 10px var(--head); letter-spacing: .26em; text-transform: uppercase; color: var(--gold); opacity: .9; }
 .nav { display: flex; gap: 26px; flex: 1; justify-content: center; }
-.nav a { position: relative; color: var(--muted); text-decoration: none; font-size: 15px; white-space: nowrap; transition: color .2s; }
-.nav a::after { content: ""; position: absolute; inset-inline: 0; bottom: -6px; height: 1px; background: var(--gold); transform: scaleX(0); transition: transform .25s var(--ease); }
+.nav a { position: relative; padding: 11px 0; color: var(--muted); text-decoration: none; font-size: 15px; white-space: nowrap; transition: color .2s; }
+.nav a::after { content: ""; position: absolute; inset-inline: 0; bottom: 5px; height: 1px; background: var(--gold); transform: scaleX(0); transition: transform .25s var(--ease); }
 .nav a:hover { color: var(--gold-3); }
 .nav a:hover::after { transform: scaleX(1); }
 .lang { display: inline-flex; align-items: center; gap: 6px; color: var(--gold); margin-inline-start: auto; }
 .lang select { font: 600 15px var(--body); color: var(--ivory); background: var(--bg-2); border: 1px solid var(--line); border-radius: 10px; padding: 7px 10px; min-height: 44px; cursor: pointer; }
-.hdr-cta { flex: none; padding: 10px 18px; border-radius: 999px; border: 1px solid var(--line-2); color: var(--gold-3); font: 700 14px var(--body); text-decoration: none; background: rgba(201, 164, 92, .08); transition: background .2s, border-color .2s; white-space: nowrap; }
+.hdr-cta { flex: none; display: inline-flex; align-items: center; min-height: 44px; padding: 10px 18px; border-radius: 999px; border: 1px solid var(--line-2); color: var(--gold-3); font: 700 14px var(--body); text-decoration: none; background: rgba(201, 164, 92, .08); transition: background .2s, border-color .2s; white-space: nowrap; }
 .hdr-cta:hover { background: rgba(201, 164, 92, .18); border-color: var(--gold); }
 
 /* Hero */
@@ -133,7 +133,8 @@ a { color: var(--gold-2); }
 .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 56px; padding: 0 28px; border-radius: 14px; font: 700 17px var(--body); text-decoration: none; color: #fff; transition: transform .2s var(--ease), box-shadow .2s, background .2s; }
 .btn:active, .hdr-cta:active, .dl button:active, .menu-btn:active, .social a:active { transform: scale(.97); }
 .btn:active { box-shadow: none; }
-.btn.wa { background: linear-gradient(180deg, #2BCB6C, var(--wa)); box-shadow: 0 12px 30px rgba(31, 175, 90, .32), inset 0 1px 0 rgba(255, 255, 255, .25); }
+/* Navy text: white on this green measured 2.1:1, under the 4.5:1 that 17px text needs; navy gives 6.5:1 or more. */
+.btn.wa { color: #0B1220; background: linear-gradient(180deg, #2BCB6C, var(--wa)); box-shadow: 0 12px 30px rgba(31, 175, 90, .32), inset 0 1px 0 rgba(255, 255, 255, .25); }
 .btn.mail { background: rgba(201, 164, 92, .06); color: var(--gold-3); border: 1px solid var(--gold); }
 .btn.mail:hover { background: rgba(201, 164, 92, .14); }
 .btn svg { flex: none; }
@@ -197,6 +198,7 @@ h3 { margin: 0 0 10px; font: 600 21px/1.3 var(--serif); color: var(--ivory); }
 .dl label { display: grid; gap: 8px; font-weight: 600; font-size: 15px; color: var(--muted); min-width: 0; }
 .dl input, .dl select { width: 100%; min-width: 0; min-height: 54px; padding: 0 14px; font: 16px var(--body); color: var(--ivory); background: var(--bg); border: 1px solid var(--line); border-radius: 12px; color-scheme: dark; transition: border-color .2s; }
 .dl input:focus, .dl select:focus { border-color: var(--gold); outline: none; }
+.dl input:focus-visible, .dl select:focus-visible { box-shadow: 0 0 0 3px rgba(230, 201, 138, .45); }
 .dl button { min-height: 54px; padding: 0 30px; border: 0; border-radius: 12px; background: linear-gradient(180deg, var(--gold-3), var(--gold)); color: #0B1220; font: 700 17px var(--body); cursor: pointer; box-shadow: 0 10px 24px rgba(201, 164, 92, .25); }
 .dl .wide { grid-column: 1 / -1; }
 .dl label[hidden] { display: none; }
@@ -243,7 +245,7 @@ details p { margin: 0 0 24px; color: var(--muted); }
 .final-in img { display: block; margin: 0 auto 26px; filter: drop-shadow(0 14px 30px rgba(0, 0, 0, .45)); }
 .final h2 { margin: 0 auto 14px; font-size: clamp(34px, 5vw, 56px); color: var(--gold-3); }
 .final p { margin: 0 auto; max-width: 620px; color: var(--muted); font-size: 19px; }
-.final .addr { margin-top: 18px; font-size: 15px; color: var(--dim); }
+.final .addr { margin-top: 18px; font-size: 15px; color: var(--muted); }
 
 /* Footer */
 .foot { padding: 64px 0 36px; border-top: 1px solid var(--line); background: #070B15; font-size: 15px; color: var(--dim); }
@@ -255,7 +257,7 @@ details p { margin: 0 0 24px; color: var(--muted); }
 
 /* Floating WhatsApp (desktop) and bottom bar (phone) appear only once a number is configured */
 .fab, .bar { display: none; }
-.has-bar .fab { position: fixed; inset-inline-end: 26px; bottom: 26px; z-index: 30; display: grid; place-items: center; width: 62px; height: 62px; border-radius: 50%; color: #fff; background: linear-gradient(180deg, #2BCB6C, var(--wa)); box-shadow: 0 14px 34px rgba(31, 175, 90, .45); transition: transform .2s var(--ease); }
+.has-bar .fab { position: fixed; inset-inline-end: 26px; bottom: 26px; z-index: 30; display: grid; place-items: center; width: 62px; height: 62px; border-radius: 50%; color: #0B1220; background: linear-gradient(180deg, #2BCB6C, var(--wa)); box-shadow: 0 14px 34px rgba(31, 175, 90, .45); transition: transform .2s var(--ease); }
 .has-bar .fab:hover { transform: scale(1.06); }
 
 /* Hover lifts only where a real pointer hovers; on touch screens they stuck after a tap. */
@@ -273,7 +275,7 @@ details p { margin: 0 0 24px; color: var(--muted); }
 .menu-open .menu-btn .x { display: block; }
 .menu-open .menu-btn .bars { display: none; }
 
-.hero-price { display: inline-flex; align-items: center; gap: 10px; margin: 14px 0 0; padding: 8px 16px; border-radius: 999px; border: 1px solid var(--line-2); background: rgba(201, 164, 92, .08); color: var(--gold-3); font: 600 15px var(--body); text-decoration: none; transition: background .2s, border-color .2s; }
+.hero-price { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; margin: 14px 0 0; padding: 8px 16px; border-radius: 999px; border: 1px solid var(--line-2); background: rgba(201, 164, 92, .08); color: var(--gold-3); font: 600 15px var(--body); text-decoration: none; transition: background .2s, border-color .2s; }
 .hero-price::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--ok); box-shadow: 0 0 0 4px rgba(95, 201, 138, .16); }
 .hero-price:hover { background: rgba(201, 164, 92, .16); border-color: var(--gold); }
 
@@ -412,7 +414,8 @@ details p { margin: 0 0 24px; color: var(--muted); }
 
 /* Generated country deadline pages (site-uret.js) */
 .cp .block { padding: 56px 0 80px; }
-.cp-h1 { margin: 0 0 22px; font: 600 clamp(28px, 4.2vw, 44px)/1.15 var(--serif); letter-spacing: -.01em; }
+/* "Abschiebungsanordnung" alone is wider than a 360px phone column: it is hyphenated by its own lang, or broken. */
+.cp-h1 { margin: 0 0 22px; font: 600 clamp(28px, 4.2vw, 44px)/1.15 var(--serif); letter-spacing: -.01em; overflow-wrap: break-word; -webkit-hyphens: auto; hyphens: auto; }
 .cp-table-wrap { overflow-x: auto; margin: 26px 0 8px; }
 .cp-table { width: 100%; border-collapse: collapse; font-size: 16px; }
 .cp-table th, .cp-table td { padding: 12px 14px; border-bottom: 1px solid var(--line); text-align: start; vertical-align: top; }
@@ -422,6 +425,11 @@ details p { margin: 0 0 24px; color: var(--muted); }
 .cp-links { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; }
 .cp-links a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 16px; border-radius: 999px; border: 1px solid var(--line); background: rgba(201, 164, 92, .05); color: var(--muted); font-size: 14px; text-decoration: none; }
 .cp-links a:hover { border-color: var(--gold); color: var(--gold-3); }
+/* TR country pages: the newest Bilgi Merkezi articles about that country (bilgi-uret.js). */
+.cp-news { list-style: none; display: grid; gap: 10px; margin: 0; padding: 0; }
+.cp-news a { display: block; padding: 16px 18px; border: 1px solid var(--line); border-radius: 14px; background: rgba(201, 164, 92, .05); color: var(--ivory); font: 600 18px/1.4 var(--serif); text-decoration: none; }
+.cp-news a:hover { border-color: var(--gold); }
+.cp-news time { display: block; margin-top: 6px; font: 400 13px var(--body); color: var(--dim); }
 .cp .h2-gap { margin-top: 56px; margin-bottom: 18px; font-size: clamp(22px, 3vw, 30px); }
 .cp-table td.cp-txt { white-space: normal; }
 .cp-steps { margin: 0; padding-inline-start: 1.4em; }
@@ -435,9 +443,15 @@ details p { margin: 0 0 24px; color: var(--muted); }
   .cp-facts dd { padding: 12px 0; }
 }
 .cp-src a { overflow-wrap: anywhere; }
-.cp-law { display: block; margin-top: 6px; font-size: 14px; }
-.cp-law a { display: inline-block; margin-inline-end: 12px; overflow-wrap: anywhere; color: var(--gold-3); }
-.law-more { display: inline-block; color: var(--gold-3); font-weight: 600; }
+.cp-law { display: block; font-size: 14px; }
+.cp-law a { display: inline-block; padding: 11px 0; margin-inline-end: 12px; overflow-wrap: anywhere; color: var(--gold-3); }
+.law-more { display: inline-flex; align-items: center; min-height: 44px; color: var(--gold-3); font-weight: 600; }
+/* Here rather than in the 560px block above: these rules come later in the file and would win over it. */
+@media (max-width: 560px) {
+  .cp-table th, .cp-table td { padding: 10px 8px; }
+  .cp-table th { letter-spacing: .06em; }
+  .cp-table td { -webkit-hyphens: auto; hyphens: auto; }
+}
 
 /* Root language chooser (site/index.html); JS visitors are sent on by kok.js before it paints */
 .kok-list { list-style: none; display: grid; gap: 12px; margin: 0; padding: 0; }

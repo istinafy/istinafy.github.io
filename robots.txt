@@ -2,3 +2,5 @@ User-agent: *
 Allow: /
 
 Sitemap: https://istinafy.com/sitemap.xml
+Sitemap: https://istinafy.com/sitemap-bilgi.xml
+Sitemap: https://istinafy.com/sitemap-haber.xml

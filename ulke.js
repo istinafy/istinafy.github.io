@@ -11,6 +11,9 @@
 // opts.from = "k": the term runs from the date of the decision itself (the UI warns), not from receipt.
 // opts.chk = true: the term itself is uncertain in the sources (the UI asks to check the decision).
 // opts.det = true: the term is shorter when the person is detained (the UI warns above the date).
+// opts.post / opts.pre = true: the term is the new (post-Pact) one / the shorter old one for applications made before
+// 12 June 2026; the UI says which above the date, so a person under the old law does not trust the new term.
+// cut: suffix of those two notes (dl_pre_old_<cut>, dl_pre_new_<cut>) for a country whose old law is not the NL one.
 (function (root) {
   var C = {
     // AT: BFA-VG § 16(1) 10 days for APR 67(7)(a) cases; AMMR transfers and subsequent applications are not clearly in § 16(2) (2 weeks), so 10.
@@ -28,7 +31,10 @@
     ES: { st: "lawyer", conf: "dusuk", shift: false, t: [["normal", 1, "m"], ["kabul", 10, "d"]] },
     FI: { st: "self", conf: "dusuk", shift: false, t: [["normal", 30, "d"], ["hizli", 10, "d"], ["sinir", 10, "d"], ["kabul", 10, "d"], ["dublin", 14, "d"], ["vv", 7, "d"]] },
     FR: { st: "first", conf: "orta", shift: false, t: [["normal", 1, "m"], ["hizli", 10, "d"], ["sinir", 10, "d"], ["kabul", 10, "d"], ["vv", 7, "d"]] },
-    GR: { st: "first", conf: "orta", shift: false, t: [["normal", 30, "d"], ["hizli", 10, "d"], ["sinir", 10, "d"], ["kabul", 10, "d"], ["dublin", 7, "d"], ["ardisik", 10, "d"]] },
+    // GR: N. 5307/2026 art. 261(2) keeps the old regime (N. 4939/2022) for applications fully registered by 11-06-2026.
+    // Old art. 97(1)(d)(ii): 5 days against a subsequent application declared inadmissible; every other old term is
+    // equal to or longer than the new one shown (arastirma/36), so only this type needs the old-law option.
+    GR: { st: "first", conf: "orta", shift: false, cut: "gr", t: [["normal", 30, "d"], ["hizli", 10, "d"], ["sinir", 10, "d"], ["kabul", 10, "d"], ["dublin", 7, "d"], ["ardisik", 10, "d", { post: true }], ["ardisik_eski", 5, "d", { pre: true }]] },
     // HR: ZUS counts Sundays and holidays, Saturday is not confirmed, so no shift.
     HR: { st: "self", conf: "orta", shift: false, t: [["normal", 30, "d"], ["sinir", 5, "w"], ["kabul", 8, "d"], ["ust", 15, "d"]] },
     HU: { st: "unclear", conf: "orta", shift: false, t: [["normal", 8, "d"], ["hizli", 7, "d"], ["kabul", 7, "d"]] },
@@ -46,7 +52,10 @@
     LV: { st: "self", conf: "dusuk", shift: false, t: [["normal", 1, "m", { min: [30, "d"] }], ["hizli", 15, "w"], ["kabul", 15, "w", { det: true }], ["dublin", 15, "w", { det: true }], ["gozalti", 5, "w"]] },
     // MT: AIDA (30.07.2026) says both "15 days" and "two weeks", so the shorter 14; Dublin rests on EUAA only.
     MT: { st: "first", conf: "dusuk", shift: false, t: [["normal", 14, "d"], ["dublin", 14, "d", { chk: true }]] },
-    NL: { st: "self", conf: "orta", shift: "nl", t: [["normal", 14, "d"], ["hizli", 7, "d"], ["sinir", 7, "d"], ["kabul", 7, "d"], ["dublin", 7, "d"], ["ardisik", 7, "d"], ["vv", 7, "d"], ["ust_kisa", 14, "d", { from: "k" }], ["ust_uzun", 28, "d", { from: "k" }]] },
+    // NL: Pakt-uitvoeringswet (Stb. 2026, 127) art. IX lid 6 keeps the old Vw terms for applications made before 12-06-2026.
+    // Old Vw 69 lid 1-2/4 (geldend t/m 11-06-2026): 4 weeks, 1 week within the AA days or for 30/30a/30b/30c/62b; hoger beroep
+    // follows the same term (Awb 6:24; arastirma/32 V18). The new 14-day "normal" would be 7 days late for an old AA case.
+    NL: { st: "self", conf: "orta", shift: "nl", t: [["normal", 14, "d", { post: true }], ["eski", 7, "d", { pre: true }], ["hizli", 7, "d"], ["sinir", 7, "d"], ["kabul", 7, "d"], ["dublin", 7, "d"], ["ardisik", 7, "d"], ["vv", 7, "d"], ["ust_kisa", 14, "d", { from: "k", post: true }], ["ust_uzun", 28, "d", { from: "k", post: true }], ["ust_eski", 7, "d", { from: "k", pre: true }]] },
     // NO: the 21-day Dublin term has no source after the AMMR (June 2026).
     NO: { st: "first", conf: "dusuk", shift: false, t: [["normal", 21, "d"], ["hizli", 7, "d"], ["dublin", 21, "d", { chk: true }]] },
     // PL: APR 67(7)(a) caps inadmissible and subsequent applications at 10 days; national 14 days is not adapted.
@@ -91,6 +100,9 @@
     var top = [], notes = [];
     if (o.from === "k") top.push(["warn", "dl_from_decision"]);
     if (o.det) top.push(["warn", "dl_detained"]);
+    var cut = c.cut ? "_" + c.cut : "";
+    if (o.post) top.push(["warn", "dl_pre_new" + cut]);
+    if (o.pre) top.push(["warn", "dl_pre_old" + cut]);
     var wd = D.parseISODate(end).getUTCDay();
     // A21: say which way the date was moved, so the reader can check it against the decision.
     if (c.shift) notes.push(["info", c.shift === "nl" ? "dl_shift_nl" : "dl_shift_we"]);
