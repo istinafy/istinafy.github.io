@@ -337,6 +337,19 @@
       b.appendChild(s);
       b.addEventListener("click", function () { saveIcs(code, v.end); });
       box.appendChild(b);
+      // No number: the visitor picks the relative; the link brings them back to their own calculator.
+      var sh = document.createElement("a");
+      sh.className = "btn share";
+      sh.href = "https://wa.me/?text=" + encodeURIComponent(fill(t("share_dl"), {
+        e: formatDate(v.end), c: countryName(code), t: termLabel(term),
+        u: location.origin + "/" + current + "/?utm_source=whatsapp&utm_medium=share#deadline" }));
+      sh.target = "_blank";
+      sh.rel = "noopener noreferrer";
+      sh.innerHTML = WA_ICON;
+      var ss = document.createElement("span");
+      ss.textContent = t("dl_share");
+      sh.appendChild(ss);
+      box.appendChild(sh);
     }
     return box;
   }

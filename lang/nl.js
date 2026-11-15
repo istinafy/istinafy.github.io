@@ -42,6 +42,8 @@ window.I18N.nl = {
   dl_note: "Dit is een schatting en toont bewust de VROEGST mogelijke dag. Uw precieze termijn staat aan het eind van uw besluit; ga altijd uit van de termijn in uw besluit. Sommige landen tellen extra dagen bij verzending per post; reken daar niet op.",
   dl_wa: "Stuur ons deze datum via WhatsApp",
   dl_ics: "Zet in agenda",
+  dl_share: "Stuur naar familie of een vriend",
+  share_dl: "Geschatte laatste dag voor beroep: {e} ({c}, {t}). De precieze termijn staat in het besluit. Bereken uw eigen termijn: {u}",
   dl_ics_title: "Laatste dag voor beroep (schatting)",
   dl_ics_desc: "Deze datum is een schatting. De precieze termijn staat in uw besluit; controleer uw besluit.",
 

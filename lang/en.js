@@ -42,6 +42,8 @@ window.I18N.en = {
   dl_note: "This is an estimate and deliberately shows the EARLIEST possible day. Your exact deadline is stated at the end of your decision; always follow the deadline in your decision. Some countries add extra days for decisions sent by post; do not rely on them.",
   dl_wa: "Message us on WhatsApp with this date",
   dl_ics: "Add to calendar",
+  dl_share: "Send to family or a friend",
+  share_dl: "Estimated last day to appeal: {e} ({c}, {t}). The exact term is in the decision. Check your own deadline: {u}",
   dl_ics_title: "Last day to appeal (estimate)",
   dl_ics_desc: "This date is an estimate. The exact deadline is written in your decision; please check your decision.",
 

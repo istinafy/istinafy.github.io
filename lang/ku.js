@@ -42,6 +42,8 @@ window.I18N.ku = {
   dl_note: "Ev hesabeke texmînî ye û bi zanebûn roja HERÎ ZÛ ya mimkun nîşan dide. Mohleta teqez di dawiya biryara we de nivîsandî ye; her tim mohleta di biryara xwe de bingeh bigirin. Li hin welatan ji bo biryara bi postê hatî rojên zêde têne hesibandin; bi vê yekê bawer nekin.",
   dl_wa: "Bi vê dîrokê bi WhatsAppê binivîsin",
   dl_ics: "Li rojjimêrê zêde bikin",
+  dl_share: "Ji malbat an hevalekî re bişîne",
+  share_dl: "Roja dawî ya texmînî ji bo îtirazê: {e} ({c}, {t}). Muddeta rast di biryarê de nivîsandî ye. Muddeta xwe hesab bike: {u}",
   dl_ics_title: "Roja dawî ya îtirazê (texmînî)",
   dl_ics_desc: "Ev dîrok texmînî ye. Mohleta teqez di biryara we de nivîsandî ye; ji kerema xwe biryara xwe kontrol bikin.",
 

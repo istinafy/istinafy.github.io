@@ -42,6 +42,8 @@ window.I18N.es = {
   dl_note: "Es un cálculo estimado y muestra a propósito el día MÁS TEMPRANO posible. Su plazo exacto figura en su resolución; siga siempre el plazo de su resolución. Algunos países añaden días si la resolución llega por correo; no cuente con ello.",
   dl_wa: "Escríbanos por WhatsApp con esta fecha",
   dl_ics: "Añadir al calendario",
+  dl_share: "Enviar a un familiar o amigo",
+  share_dl: "Último día estimado para recurrir: {e} ({c}, {t}). El plazo exacto figura en la resolución. Calcule su propio plazo: {u}",
   dl_ics_title: "Último día para recurrir (estimado)",
   dl_ics_desc: "Esta fecha es una estimación. El plazo exacto figura en su resolución; compruébelo en ella.",
 

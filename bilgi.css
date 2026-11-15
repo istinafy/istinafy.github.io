@@ -204,6 +204,8 @@ html:not(.js) .bm-progress { display: none; }
 .bm-follow-l { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px !important; }
 .bm-follow-l a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 14px; border-radius: 999px; background: var(--p-card); border: 1px solid var(--p-line); font: 600 14px var(--body); text-decoration: none; color: var(--p-ink); }
 .bm-follow-l a:first-child { background: var(--p-ink); border-color: var(--p-ink); color: var(--p-bg); }
+.bm-follow .bm-pref { margin: 12px 0 0; font: 600 14.5px/1.5 var(--body); }
+.bm-pref a { display: inline-flex; align-items: center; min-height: 44px; color: var(--p-ink); }
 .bm-related { margin-top: 3.4em; }
 .bm-related h2 { margin: 0 0 20px; font: 600 26px/1.2 var(--serif); }
 .bm-related .bm-cards { grid-template-columns: minmax(0, 1fr); }

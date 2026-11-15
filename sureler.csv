@@ -1,0 +1,129 @@
+country_code,country,decision_type,amount,unit,runs_from_decision_date,uncertain,page,checked
+AT,Austria,Regular rejection,28,days,false,false,https://istinafy.com/en/at/,2026-11-15
+AT,Austria,Accelerated procedure,10,days,false,false,https://istinafy.com/en/at/,2026-11-15
+AT,Austria,Border procedure,10,days,false,false,https://istinafy.com/en/at/,2026-11-15
+AT,Austria,Inadmissibility decision,10,days,false,false,https://istinafy.com/en/at/,2026-11-15
+AT,Austria,Dublin / transfer to another country,14,days,false,false,https://istinafy.com/en/at/,2026-11-15
+AT,Austria,Subsequent application,10,days,false,false,https://istinafy.com/en/at/,2026-11-15
+BE,Belgium,Regular rejection,30,days,false,false,https://istinafy.com/en/be/,2026-11-15
+BE,Belgium,Accelerated procedure,10,days,false,false,https://istinafy.com/en/be/,2026-11-15
+BE,Belgium,Border procedure,5,days,false,false,https://istinafy.com/en/be/,2026-11-15
+BE,Belgium,Inadmissibility decision,10,days,false,false,https://istinafy.com/en/be/,2026-11-15
+BE,Belgium,Dublin / transfer to another country,10,days,false,false,https://istinafy.com/en/be/,2026-11-15
+BE,Belgium,Subsequent application,10,days,false,false,https://istinafy.com/en/be/,2026-11-15
+BE,Belgium,Subsequent application: I was in detention when I applied,5,days,false,false,https://istinafy.com/en/be/,2026-11-15
+BG,Bulgaria,Regular rejection,14,days,false,false,https://istinafy.com/en/bg/,2026-11-10
+BG,Bulgaria,Accelerated procedure,7,days,false,false,https://istinafy.com/en/bg/,2026-11-10
+CH,Switzerland,Regular rejection,30,days,false,false,https://istinafy.com/en/ch/,2026-11-10
+CH,Switzerland,Accelerated procedure,7,working_days,false,false,https://istinafy.com/en/ch/,2026-11-10
+CH,Switzerland,Inadmissibility decision,5,working_days,false,false,https://istinafy.com/en/ch/,2026-11-10
+CH,Switzerland,Dublin / transfer to another country,5,working_days,false,false,https://istinafy.com/en/ch/,2026-11-10
+CY,Cyprus,Regular rejection,20,days,false,false,https://istinafy.com/en/cy/,2026-11-10
+CY,Cyprus,Accelerated procedure,10,days,false,false,https://istinafy.com/en/cy/,2026-11-10
+CY,Cyprus,Inadmissibility decision,10,days,false,false,https://istinafy.com/en/cy/,2026-11-10
+CY,Cyprus,Subsequent application,10,days,false,false,https://istinafy.com/en/cy/,2026-11-10
+CZ,Czechia,Regular rejection,15,days,false,false,https://istinafy.com/en/cz/,2026-11-10
+CZ,Czechia,Accelerated procedure,10,days,false,false,https://istinafy.com/en/cz/,2026-11-10
+CZ,Czechia,Border procedure,10,days,false,false,https://istinafy.com/en/cz/,2026-11-10
+CZ,Czechia,Inadmissibility decision,10,days,false,false,https://istinafy.com/en/cz/,2026-11-10
+CZ,Czechia,Dublin / transfer to another country,10,days,false,false,https://istinafy.com/en/cz/,2026-11-10
+CZ,Czechia,Subsequent application,10,days,false,false,https://istinafy.com/en/cz/,2026-11-10
+DE,Germany,Regular rejection,14,days,false,false,https://istinafy.com/en/de/,2026-11-10
+DE,Germany,Accelerated procedure,7,days,false,false,https://istinafy.com/en/de/,2026-11-10
+DE,Germany,Border procedure,7,days,false,false,https://istinafy.com/en/de/,2026-11-10
+DE,Germany,Inadmissibility decision,7,days,false,false,https://istinafy.com/en/de/,2026-11-10
+DE,Germany,Dublin / transfer to another country,7,days,false,false,https://istinafy.com/en/de/,2026-11-10
+DE,Germany,Subsequent application,7,days,false,false,https://istinafy.com/en/de/,2026-11-10
+DK,Denmark,Inadmissibility decision,7,days,false,false,https://istinafy.com/en/dk/,2026-11-10
+DK,Denmark,Dublin / transfer to another country,7,days,false,false,https://istinafy.com/en/dk/,2026-11-10
+EE,Estonia,Border procedure,5,days,false,false,https://istinafy.com/en/ee/,2026-11-10
+EE,Estonia,Inadmissibility decision,5,days,false,false,https://istinafy.com/en/ee/,2026-11-10
+EE,Estonia,Dublin / transfer to another country,10,days,false,false,https://istinafy.com/en/ee/,2026-11-10
+ES,Spain,Regular rejection,1,months,false,false,https://istinafy.com/en/es/,2026-11-10
+ES,Spain,Inadmissibility decision,10,days,false,false,https://istinafy.com/en/es/,2026-11-10
+FI,Finland,Regular rejection,30,days,false,false,https://istinafy.com/en/fi/,2026-11-10
+FI,Finland,Accelerated procedure,10,days,false,false,https://istinafy.com/en/fi/,2026-11-10
+FI,Finland,Border procedure,10,days,false,false,https://istinafy.com/en/fi/,2026-11-10
+FI,Finland,Inadmissibility decision,10,days,false,false,https://istinafy.com/en/fi/,2026-11-10
+FI,Finland,Dublin / transfer to another country,14,days,false,false,https://istinafy.com/en/fi/,2026-11-10
+FI,Finland,Urgent interim measure,7,days,false,false,https://istinafy.com/en/fi/,2026-11-10
+FR,France,Regular rejection,1,months,false,false,https://istinafy.com/en/fr/,2026-11-10
+FR,France,Accelerated procedure,10,days,false,false,https://istinafy.com/en/fr/,2026-11-10
+FR,France,Border procedure,10,days,false,false,https://istinafy.com/en/fr/,2026-11-10
+FR,France,Inadmissibility decision,10,days,false,false,https://istinafy.com/en/fr/,2026-11-10
+FR,France,Dublin / transfer to another country,7,days,false,false,https://istinafy.com/en/fr/,2026-11-10
+FR,France,Urgent interim measure,7,days,false,false,https://istinafy.com/en/fr/,2026-11-10
+GR,Greece,Regular rejection,30,days,false,false,https://istinafy.com/en/gr/,2026-11-10
+GR,Greece,Accelerated procedure,10,days,false,false,https://istinafy.com/en/gr/,2026-11-10
+GR,Greece,Border procedure,10,days,false,false,https://istinafy.com/en/gr/,2026-11-10
+GR,Greece,Inadmissibility decision,10,days,false,false,https://istinafy.com/en/gr/,2026-11-10
+GR,Greece,Dublin / transfer to another country,7,days,false,false,https://istinafy.com/en/gr/,2026-11-10
+GR,Greece,Subsequent application,10,days,false,false,https://istinafy.com/en/gr/,2026-11-10
+GR,Greece,Subsequent application (registered before 12 June 2026),5,days,false,false,https://istinafy.com/en/gr/,2026-11-10
+HR,Croatia,Regular rejection,30,days,false,false,https://istinafy.com/en/hr/,2026-11-10
+HR,Croatia,Border procedure,5,working_days,false,false,https://istinafy.com/en/hr/,2026-11-10
+HR,Croatia,Inadmissibility decision,8,days,false,false,https://istinafy.com/en/hr/,2026-11-10
+HR,Croatia,Appeal to the higher court,15,days,false,false,https://istinafy.com/en/hr/,2026-11-10
+HU,Hungary,Regular rejection,8,days,false,false,https://istinafy.com/en/hu/,2026-11-10
+HU,Hungary,Accelerated procedure,7,days,false,false,https://istinafy.com/en/hu/,2026-11-10
+HU,Hungary,Inadmissibility decision,7,days,false,false,https://istinafy.com/en/hu/,2026-11-10
+IE,Ireland,Regular rejection,1,months,true,false,https://istinafy.com/en/ie/,2026-11-10
+IE,Ireland,Accelerated procedure,10,days,true,false,https://istinafy.com/en/ie/,2026-11-10
+IE,Ireland,Border procedure,10,days,true,false,https://istinafy.com/en/ie/,2026-11-10
+IE,Ireland,Dublin / transfer to another country,7,days,false,false,https://istinafy.com/en/ie/,2026-11-10
+IS,Iceland,Regular rejection,15,days,false,false,https://istinafy.com/en/is/,2026-11-10
+IS,Iceland,Accelerated procedure,5,days,false,false,https://istinafy.com/en/is/,2026-11-10
+IS,Iceland,Inadmissibility decision (the appeal is automatic; the term is for the written reasons),14,days,false,false,https://istinafy.com/en/is/,2026-11-10
+IT,Italy,Regular rejection,30,days,false,false,https://istinafy.com/en/it/,2026-11-10
+IT,Italy,Accelerated procedure,7,days,false,false,https://istinafy.com/en/it/,2026-11-10
+IT,Italy,Border procedure,5,days,false,false,https://istinafy.com/en/it/,2026-11-10
+LI,Liechtenstein,Regular rejection,14,days,false,true,https://istinafy.com/en/li/,2026-11-10
+LT,Lithuania,Regular rejection,7,days,false,false,https://istinafy.com/en/lt/,2026-11-10
+LT,Lithuania,Dublin / transfer to another country,14,days,true,false,https://istinafy.com/en/lt/,2026-11-10
+LU,Luxembourg,Regular rejection,20,days,false,false,https://istinafy.com/en/lu/,2026-11-10
+LU,Luxembourg,Accelerated procedure,10,days,false,false,https://istinafy.com/en/lu/,2026-11-10
+LU,Luxembourg,Inadmissibility decision,10,days,false,false,https://istinafy.com/en/lu/,2026-11-10
+LU,Luxembourg,Dublin / transfer to another country,10,days,false,false,https://istinafy.com/en/lu/,2026-11-10
+LV,Latvia,Regular rejection,1,months,false,false,https://istinafy.com/en/lv/,2026-11-10
+LV,Latvia,Accelerated procedure,15,working_days,false,false,https://istinafy.com/en/lv/,2026-11-10
+LV,Latvia,Inadmissibility decision,15,working_days,false,false,https://istinafy.com/en/lv/,2026-11-10
+LV,Latvia,Dublin / transfer to another country,15,working_days,false,false,https://istinafy.com/en/lv/,2026-11-10
+LV,Latvia,In detention: inadmissibility or Dublin,5,working_days,false,false,https://istinafy.com/en/lv/,2026-11-10
+MT,Malta,Regular rejection,14,days,false,false,https://istinafy.com/en/mt/,2026-11-10
+MT,Malta,Dublin / transfer to another country,14,days,false,true,https://istinafy.com/en/mt/,2026-11-10
+NL,Netherlands,Regular rejection,14,days,false,false,https://istinafy.com/en/nl/,2026-11-10
+NL,Netherlands,Rejection (I applied before 12 June 2026),7,days,false,false,https://istinafy.com/en/nl/,2026-11-10
+NL,Netherlands,Accelerated procedure,7,days,false,false,https://istinafy.com/en/nl/,2026-11-10
+NL,Netherlands,Border procedure,7,days,false,false,https://istinafy.com/en/nl/,2026-11-10
+NL,Netherlands,Inadmissibility decision,7,days,false,false,https://istinafy.com/en/nl/,2026-11-10
+NL,Netherlands,Dublin / transfer to another country,7,days,false,false,https://istinafy.com/en/nl/,2026-11-10
+NL,Netherlands,Subsequent application,7,days,false,false,https://istinafy.com/en/nl/,2026-11-10
+NL,Netherlands,Urgent interim measure,7,days,false,false,https://istinafy.com/en/nl/,2026-11-10
+NL,Netherlands,Appeal to the higher court (first appeal period was 1 week),14,days,true,false,https://istinafy.com/en/nl/,2026-11-10
+NL,Netherlands,Appeal to the higher court (first appeal period was 2 weeks),28,days,true,false,https://istinafy.com/en/nl/,2026-11-10
+NL,Netherlands,Appeal to the higher court (I applied before 12 June 2026),7,days,true,false,https://istinafy.com/en/nl/,2026-11-10
+NO,Norway,Regular rejection,21,days,false,false,https://istinafy.com/en/no/,2026-11-10
+NO,Norway,Accelerated procedure,7,days,false,false,https://istinafy.com/en/no/,2026-11-10
+NO,Norway,Dublin / transfer to another country,21,days,false,true,https://istinafy.com/en/no/,2026-11-10
+PL,Poland,Regular rejection,14,days,false,false,https://istinafy.com/en/pl/,2026-11-10
+PL,Poland,Accelerated procedure,7,days,false,false,https://istinafy.com/en/pl/,2026-11-10
+PL,Poland,Inadmissibility decision,10,days,false,false,https://istinafy.com/en/pl/,2026-11-10
+PL,Poland,Dublin / transfer to another country,14,days,false,false,https://istinafy.com/en/pl/,2026-11-10
+PL,Poland,Subsequent application,10,days,false,false,https://istinafy.com/en/pl/,2026-11-10
+PT,Portugal,Regular rejection,15,days,false,true,https://istinafy.com/en/pt/,2026-11-10
+RO,Romania,Regular rejection,10,days,false,false,https://istinafy.com/en/ro/,2026-11-10
+RO,Romania,Accelerated procedure,2,days,false,false,https://istinafy.com/en/ro/,2026-11-10
+SE,Sweden,Regular rejection,21,days,false,false,https://istinafy.com/en/se/,2026-11-10
+SE,Sweden,Accelerated procedure,7,days,false,false,https://istinafy.com/en/se/,2026-11-10
+SE,Sweden,Border procedure,7,days,false,false,https://istinafy.com/en/se/,2026-11-10
+SE,Sweden,Inadmissibility decision,7,days,false,false,https://istinafy.com/en/se/,2026-11-10
+SE,Sweden,Dublin / transfer to another country,7,days,false,false,https://istinafy.com/en/se/,2026-11-10
+SI,Slovenia,Regular rejection,3,days,false,false,https://istinafy.com/en/si/,2026-11-10
+SI,Slovenia,Accelerated procedure,3,days,false,false,https://istinafy.com/en/si/,2026-11-10
+SI,Slovenia,Border procedure,3,days,false,false,https://istinafy.com/en/si/,2026-11-10
+SI,Slovenia,Inadmissibility decision,3,days,false,false,https://istinafy.com/en/si/,2026-11-10
+SI,Slovenia,Subsequent application,3,days,false,false,https://istinafy.com/en/si/,2026-11-10
+SK,Slovakia,Regular rejection,1,months,false,false,https://istinafy.com/en/sk/,2026-11-10
+SK,Slovakia,Border procedure,7,days,false,false,https://istinafy.com/en/sk/,2026-11-10
+SK,Slovakia,Inadmissibility decision,10,days,false,false,https://istinafy.com/en/sk/,2026-11-10
+SK,Slovakia,Dublin / transfer to another country,7,days,false,false,https://istinafy.com/en/sk/,2026-11-10

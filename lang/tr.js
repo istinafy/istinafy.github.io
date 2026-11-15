@@ -42,6 +42,8 @@ window.I18N.tr = {
   dl_note: "Tahmini hesaptır ve bilerek EN ERKEN olası günü gösterir. Kesin süre kararınızın sonunda (itiraz yolları bölümünde) yazar; her zaman kararınızdaki süreyi esas alın. Bazı ülkelerde postayla gelen karara ek gün sayılır; buna güvenmeyin.",
   dl_wa: "Bu tarihle WhatsApp'tan yazın",
   dl_ics: "Takvime ekle",
+  dl_share: "Yakınınıza gönderin",
+  share_dl: "İtiraz için tahmini son gün: {e} ({c}, {t}). Kesin süre kararda yazar. Kendi son gününüzü hesaplayın: {u}",
   dl_ics_title: "İtiraz için son gün (tahmini)",
   dl_ics_desc: "Bu tarih tahminidir. Kesin süre kararınızda yazar; lütfen kararınızı kontrol edin.",
 

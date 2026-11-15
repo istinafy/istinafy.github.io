@@ -42,6 +42,8 @@ window.I18N.fr = {
   dl_note: "Il s'agit d'une estimation qui indique volontairement le jour le PLUS TÔT possible. Votre délai exact figure dans votre décision ; suivez toujours le délai de votre décision. Certains pays ajoutent des jours pour une décision envoyée par la poste ; n'y comptez pas.",
   dl_wa: "Écrivez-nous sur WhatsApp avec cette date",
   dl_ics: "Ajouter à l'agenda",
+  dl_share: "Envoyer à un proche",
+  share_dl: "Dernier jour estimé pour faire recours : {e} ({c}, {t}). Le délai exact figure dans la décision. Calculez votre propre délai : {u}",
   dl_ics_title: "Dernier jour pour le recours (estimation)",
   dl_ics_desc: "Cette date est une estimation. Le délai exact figure dans votre décision ; vérifiez-la, s'il vous plaît.",
 
