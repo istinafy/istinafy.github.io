@@ -14,12 +14,18 @@
 // opts.post / opts.pre = true: the term is the new (post-Pact) one / the shorter old one for applications made before
 // 12 June 2026; the UI says which above the date, so a person under the old law does not trust the new term.
 // cut: suffix of those two notes (dl_pre_old_<cut>, dl_pre_new_<cut>) for a country whose old law is not the NL one.
+// dcut: suffix of the detention note (dl_detained_<dcut>) for a country whose detention rule is not the LV one.
 (function (root) {
   var C = {
-    // AT: BFA-VG § 16(1) 10 days for APR 67(7)(a) cases; AMMR transfers and subsequent applications are not clearly in § 16(2) (2 weeks), so 10.
-    AT: { st: "first", conf: "orta", shift: true, t: [["normal", 28, "d"], ["hizli", 10, "d"], ["sinir", 10, "d"], ["kabul", 10, "d"], ["dublin", 10, "d"], ["ardisik", 10, "d"]] },
-    // BE: subsequent applications 30 days only when not accelerated; the shorter term is kept.
-    BE: { st: "unclear", conf: "dusuk", shift: true, t: [["normal", 30, "d"], ["hizli", 10, "d"], ["sinir", 5, "d"], ["kabul", 10, "d"], ["dublin", 5, "d"], ["ardisik", 10, "d"]] },
+    // AT: BFA-VG § 16(1) 10 days for APR 67(7)(a) cases. § 16(2) Z 3 (RIS, read 15-11-2026) gives an AMMR art. 42
+    // transfer decision two weeks without condition; it is not an APR decision, so the 10 days do not apply to it.
+    // Inadmissible and subsequent applications stay at 10: 2 or 4 weeks only when no APR art. 42 ground applies.
+    AT: { st: "first", conf: "orta", shift: true, t: [["normal", 28, "d"], ["hizli", 10, "d"], ["sinir", 10, "d"], ["kabul", 10, "d"], ["dublin", 14, "d"], ["ardisik", 10, "d"]] },
+    // BE: RvV-wet 17.06.2026 art. 2.15 (arastirma/40-denetim-belcika.md): 30 days (par. 1); 10 days for accelerated,
+    // inadmissible and transfer (Dublin) decisions (par. 2); 5 days at the border and for an inadmissible subsequent
+    // application when the person was detained at the time of that application (par. 3 2 a). Art. 2.5 par. 2 also
+    // moves a last day on a public holiday; holidays are not in the data, so only weekends (earlier, safe direction).
+    BE: { st: "unclear", conf: "orta", shift: true, dcut: "be", t: [["normal", 30, "d"], ["hizli", 10, "d"], ["sinir", 5, "d"], ["kabul", 10, "d"], ["dublin", 10, "d"], ["ardisik", 10, "d", { det: true }], ["ardisik_gozalti", 5, "d"]] },
     BG: { st: "unclear", conf: "dusuk", shift: false, t: [["normal", 14, "d"], ["hizli", 7, "d"]] },
     CH: { st: "self", conf: "orta", shift: true, t: [["normal", 30, "d"], ["hizli", 7, "w"], ["kabul", 5, "w"], ["dublin", 5, "w"]] },
     CY: { st: "first", conf: "dusuk", shift: false, t: [["normal", 20, "d"], ["hizli", 10, "d"], ["kabul", 10, "d"], ["ardisik", 10, "d"]] },
@@ -30,7 +36,10 @@
     // ES: the old 2-month LJCA term exceeds the APR 67(7) maximum (1 month; 10 days for inadmissibility) that the BOE instruction refers to.
     ES: { st: "lawyer", conf: "dusuk", shift: false, t: [["normal", 1, "m"], ["kabul", 10, "d"]] },
     FI: { st: "self", conf: "dusuk", shift: false, t: [["normal", 30, "d"], ["hizli", 10, "d"], ["sinir", 10, "d"], ["kabul", 10, "d"], ["dublin", 14, "d"], ["vv", 7, "d"]] },
-    FR: { st: "first", conf: "orta", shift: false, t: [["normal", 1, "m"], ["hizli", 10, "d"], ["sinir", 10, "d"], ["kabul", 10, "d"], ["vv", 7, "d"]] },
+    // FR: CESEDA R.532-10 (1 month; 10 days accelerated/inadmissible, applications from 12-06-2026, older ones 1 month,
+    // so 10 is the earlier date). Transfer (Dublin) 7 days (L.572-4 with L.921-1). In retention R.921-2-1 gives
+    // 48 hours, counted in hours, so no day count is offered for it: the vv term carries the warning instead.
+    FR: { st: "first", conf: "orta", shift: false, dcut: "fr", t: [["normal", 1, "m"], ["hizli", 10, "d"], ["sinir", 10, "d"], ["kabul", 10, "d"], ["dublin", 7, "d"], ["vv", 7, "d", { det: true }]] },
     // GR: N. 5307/2026 art. 261(2) keeps the old regime (N. 4939/2022) for applications fully registered by 11-06-2026.
     // Old art. 97(1)(d)(ii): 5 days against a subsequent application declared inadmissible; every other old term is
     // equal to or longer than the new one shown (arastirma/36), so only this type needs the old-law option.
@@ -99,7 +108,7 @@
     var left = D.daysBetween(todayISO, end);
     var top = [], notes = [];
     if (o.from === "k") top.push(["warn", "dl_from_decision"]);
-    if (o.det) top.push(["warn", "dl_detained"]);
+    if (o.det) top.push(["warn", "dl_detained" + (c.dcut ? "_" + c.dcut : "")]);
     var cut = c.cut ? "_" + c.cut : "";
     if (o.post) top.push(["warn", "dl_pre_new" + cut]);
     if (o.pre) top.push(["warn", "dl_pre_old" + cut]);
