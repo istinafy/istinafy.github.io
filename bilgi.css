@@ -93,6 +93,7 @@ html:not(.js) .bm-progress { display: none; }
 .bm-aa button[aria-pressed="true"] { border-color: var(--p-gold); background: var(--p-gold-soft); }
 
 .bm-hero { max-width: 1168px; margin: 36px auto 0; padding: 0 24px; }
+.bm-hero picture, .bm-card-m picture { display: contents; }
 .bm-hero img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 4px; background: var(--p-sunk); }
 .bm-hero figcaption { max-width: 700px; margin: 12px auto 0; font: 400 13.5px/1.5 var(--body); color: var(--p-mute); }
 .bm-hero figcaption a { text-decoration: underline; text-decoration-color: var(--p-line-2); text-underline-offset: 2px; }
