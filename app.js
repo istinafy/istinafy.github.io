@@ -3,6 +3,20 @@
   var packs = window.I18N;
   var current = cfg.defaultLang;
 
+  // U17: ?embed=1 leaves only the deadline calculator, for partner sites that show it in an iframe;
+  // the credit link under it is the one brand-name link the embed carries.
+  if (/[?&]embed=1(&|$)/.test(location.search || "")) {
+    document.documentElement.className += " embed";
+    var dlWrap = document.querySelector("#deadline .wrap");
+    if (dlWrap) {
+      var by = document.createElement("p"), byA = document.createElement("a");
+      by.className = "embed-by";
+      byA.href = location.origin + "/" + (pathLang() || cfg.defaultLang) + "/?utm_source=embed&utm_medium=iframe";
+      byA.target = "_blank"; byA.rel = "noopener"; byA.textContent = "ISTINAFY";
+      by.appendChild(byA); dlWrap.appendChild(by);
+    }
+  }
+
   function t(k) {
     var p = packs[current] || {};
     // Only the page's own pack is loaded, so there is no other pack to borrow from; test/dil.test.js keeps every pack complete.

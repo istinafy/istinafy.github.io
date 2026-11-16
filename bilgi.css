@@ -311,3 +311,6 @@ html:not(.js) .bm-progress { display: none; }
   .top, .bm-sub, .bm-progress, .bm-share, .bm-cta, .bm-follow, .bm-related, .bm-toc, .bm-toc-m, .bm-aa-btn, .bm-foot { display: none !important; }
   body.bm { background: #fff; color: #000; }
 }
+
+/* U17: the embed code on the about page wraps instead of widening the page on phones. */
+.bm-embed { display: block; margin-top: 8px; padding: 10px 12px; overflow-wrap: anywhere; white-space: normal; font-size: 13px; background: var(--p-sunk); border-radius: 4px; }

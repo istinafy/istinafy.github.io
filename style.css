@@ -485,3 +485,9 @@ details p { margin: 0 0 24px; color: var(--muted); }
 .kok-topic { font: 600 clamp(18px, 2.2vw, 22px)/1.3 var(--serif); color: var(--ivory); }
 .kok-desc { font-size: 15px; }
 [dir="rtl"] .kok-topic { font-family: "Segoe UI", "Noto Naskh Arabic", "Noto Sans Arabic", Tahoma, sans-serif; }
+
+/* U17: embedded calculator (?embed=1) shows the deadline block alone, with the ISTINAFY credit under it. */
+.embed .skip, .embed #hdr, .embed .foot, .embed .fab, .embed .bar, .embed #main > section:not(#deadline) { display: none !important; }
+.embed #deadline { padding-block: 20px; }
+.embed-by { margin-top: 14px; text-align: center; font-size: 14px; }
+.embed-by a { color: var(--gold, #C9A45C); font-weight: 700; letter-spacing: .04em; }

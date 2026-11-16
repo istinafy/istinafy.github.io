@@ -2,6 +2,7 @@
 window.SITE_CONFIG = {
   whatsapp: "31643705418",          // international format without + or spaces, e.g. "31612345678"
   email: "istinafy@gmail.com",             // e.g. "info@example.com"
+  waChannel: "",                    // WhatsApp channel address, e.g. "https://whatsapp.com/channel/0029Va..."; empty hides the link
   social: [
     { id: "instagram", name: "Instagram", url: "https://www.instagram.com/istinafy/" },
     { id: "tiktok", name: "TikTok", url: "https://www.tiktok.com/@istinafyy" },
