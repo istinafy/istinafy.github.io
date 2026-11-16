@@ -10,7 +10,7 @@
     <xhtml:link rel="alternate" hreflang="nl" href="https://istinafy.com/nl/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://istinafy.com/"/>
   </url>
-  <url><loc>https://istinafy.com/tr/</loc><lastmod>2026-11-15</lastmod>
+  <url><loc>https://istinafy.com/tr/</loc><lastmod>2026-11-16</lastmod>
     <xhtml:link rel="alternate" hreflang="tr" href="https://istinafy.com/tr/"/>
     <xhtml:link rel="alternate" hreflang="ku" href="https://istinafy.com/ku/"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://istinafy.com/ar/"/>
@@ -100,6 +100,16 @@
     <xhtml:link rel="alternate" hreflang="nl" href="https://istinafy.com/nl/sureler/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://istinafy.com/en/sureler/"/>
   </url>
+  <url><loc>https://istinafy.com/tr/sozluk/</loc><lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://istinafy.com/tr/sozluk/"/>
+    <xhtml:link rel="alternate" hreflang="ku" href="https://istinafy.com/ku/sozluk/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://istinafy.com/ar/sozluk/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://istinafy.com/es/sozluk/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://istinafy.com/fr/sozluk/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://istinafy.com/en/sozluk/"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://istinafy.com/nl/sozluk/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://istinafy.com/en/sozluk/"/>
+  </url>
   <url><loc>https://istinafy.com/ku/hukuk/</loc><lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="tr" href="https://istinafy.com/tr/hukuk/"/>
     <xhtml:link rel="alternate" hreflang="ku" href="https://istinafy.com/ku/hukuk/"/>
@@ -119,6 +129,16 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://istinafy.com/en/sureler/"/>
     <xhtml:link rel="alternate" hreflang="nl" href="https://istinafy.com/nl/sureler/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://istinafy.com/en/sureler/"/>
+  </url>
+  <url><loc>https://istinafy.com/ku/sozluk/</loc><lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://istinafy.com/tr/sozluk/"/>
+    <xhtml:link rel="alternate" hreflang="ku" href="https://istinafy.com/ku/sozluk/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://istinafy.com/ar/sozluk/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://istinafy.com/es/sozluk/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://istinafy.com/fr/sozluk/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://istinafy.com/en/sozluk/"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://istinafy.com/nl/sozluk/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://istinafy.com/en/sozluk/"/>
   </url>
   <url><loc>https://istinafy.com/ar/hukuk/</loc><lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="tr" href="https://istinafy.com/tr/hukuk/"/>
@@ -140,6 +160,16 @@
     <xhtml:link rel="alternate" hreflang="nl" href="https://istinafy.com/nl/sureler/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://istinafy.com/en/sureler/"/>
   </url>
+  <url><loc>https://istinafy.com/ar/sozluk/</loc><lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://istinafy.com/tr/sozluk/"/>
+    <xhtml:link rel="alternate" hreflang="ku" href="https://istinafy.com/ku/sozluk/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://istinafy.com/ar/sozluk/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://istinafy.com/es/sozluk/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://istinafy.com/fr/sozluk/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://istinafy.com/en/sozluk/"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://istinafy.com/nl/sozluk/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://istinafy.com/en/sozluk/"/>
+  </url>
   <url><loc>https://istinafy.com/es/hukuk/</loc><lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="tr" href="https://istinafy.com/tr/hukuk/"/>
     <xhtml:link rel="alternate" hreflang="ku" href="https://istinafy.com/ku/hukuk/"/>
@@ -159,6 +189,16 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://istinafy.com/en/sureler/"/>
     <xhtml:link rel="alternate" hreflang="nl" href="https://istinafy.com/nl/sureler/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://istinafy.com/en/sureler/"/>
+  </url>
+  <url><loc>https://istinafy.com/es/sozluk/</loc><lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://istinafy.com/tr/sozluk/"/>
+    <xhtml:link rel="alternate" hreflang="ku" href="https://istinafy.com/ku/sozluk/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://istinafy.com/ar/sozluk/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://istinafy.com/es/sozluk/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://istinafy.com/fr/sozluk/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://istinafy.com/en/sozluk/"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://istinafy.com/nl/sozluk/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://istinafy.com/en/sozluk/"/>
   </url>
   <url><loc>https://istinafy.com/fr/hukuk/</loc><lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="tr" href="https://istinafy.com/tr/hukuk/"/>
@@ -180,6 +220,16 @@
     <xhtml:link rel="alternate" hreflang="nl" href="https://istinafy.com/nl/sureler/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://istinafy.com/en/sureler/"/>
   </url>
+  <url><loc>https://istinafy.com/fr/sozluk/</loc><lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://istinafy.com/tr/sozluk/"/>
+    <xhtml:link rel="alternate" hreflang="ku" href="https://istinafy.com/ku/sozluk/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://istinafy.com/ar/sozluk/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://istinafy.com/es/sozluk/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://istinafy.com/fr/sozluk/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://istinafy.com/en/sozluk/"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://istinafy.com/nl/sozluk/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://istinafy.com/en/sozluk/"/>
+  </url>
   <url><loc>https://istinafy.com/en/hukuk/</loc><lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="tr" href="https://istinafy.com/tr/hukuk/"/>
     <xhtml:link rel="alternate" hreflang="ku" href="https://istinafy.com/ku/hukuk/"/>
@@ -200,6 +250,16 @@
     <xhtml:link rel="alternate" hreflang="nl" href="https://istinafy.com/nl/sureler/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://istinafy.com/en/sureler/"/>
   </url>
+  <url><loc>https://istinafy.com/en/sozluk/</loc><lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://istinafy.com/tr/sozluk/"/>
+    <xhtml:link rel="alternate" hreflang="ku" href="https://istinafy.com/ku/sozluk/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://istinafy.com/ar/sozluk/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://istinafy.com/es/sozluk/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://istinafy.com/fr/sozluk/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://istinafy.com/en/sozluk/"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://istinafy.com/nl/sozluk/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://istinafy.com/en/sozluk/"/>
+  </url>
   <url><loc>https://istinafy.com/nl/hukuk/</loc><lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="tr" href="https://istinafy.com/tr/hukuk/"/>
     <xhtml:link rel="alternate" hreflang="ku" href="https://istinafy.com/ku/hukuk/"/>
@@ -219,6 +279,16 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://istinafy.com/en/sureler/"/>
     <xhtml:link rel="alternate" hreflang="nl" href="https://istinafy.com/nl/sureler/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://istinafy.com/en/sureler/"/>
+  </url>
+  <url><loc>https://istinafy.com/nl/sozluk/</loc><lastmod>2026-11-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://istinafy.com/tr/sozluk/"/>
+    <xhtml:link rel="alternate" hreflang="ku" href="https://istinafy.com/ku/sozluk/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://istinafy.com/ar/sozluk/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://istinafy.com/es/sozluk/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://istinafy.com/fr/sozluk/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://istinafy.com/en/sozluk/"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://istinafy.com/nl/sozluk/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://istinafy.com/en/sozluk/"/>
   </url>
   <url><loc>https://istinafy.com/tr/at/</loc><lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="tr" href="https://istinafy.com/tr/at/"/>
@@ -640,7 +710,7 @@
     <xhtml:link rel="alternate" hreflang="nl" href="https://istinafy.com/nl/cz/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://istinafy.com/en/cz/"/>
   </url>
-  <url><loc>https://istinafy.com/tr/de/</loc><lastmod>2026-11-15</lastmod>
+  <url><loc>https://istinafy.com/tr/de/</loc><lastmod>2026-11-16</lastmod>
     <xhtml:link rel="alternate" hreflang="tr" href="https://istinafy.com/tr/de/"/>
     <xhtml:link rel="alternate" hreflang="ku" href="https://istinafy.com/ku/de/"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://istinafy.com/ar/de/"/>
@@ -1830,7 +1900,7 @@
     <xhtml:link rel="alternate" hreflang="nl" href="https://istinafy.com/nl/mt/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://istinafy.com/en/mt/"/>
   </url>
-  <url><loc>https://istinafy.com/tr/nl/</loc><lastmod>2026-11-15</lastmod>
+  <url><loc>https://istinafy.com/tr/nl/</loc><lastmod>2026-11-16</lastmod>
     <xhtml:link rel="alternate" hreflang="tr" href="https://istinafy.com/tr/nl/"/>
     <xhtml:link rel="alternate" hreflang="ku" href="https://istinafy.com/ku/nl/"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://istinafy.com/ar/nl/"/>
