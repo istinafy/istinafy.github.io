@@ -177,6 +177,9 @@ html:not(.js) .bm-progress { display: none; }
 .bm-share span { margin-inline-end: 6px; font: 700 12px var(--head); letter-spacing: .18em; text-transform: uppercase; color: var(--p-mute); }
 .bm-share a, .bm-share button { display: inline-flex; align-items: center; min-height: 44px; padding: 0 15px; border: 1px solid var(--p-line-2); border-radius: 999px; background: transparent; color: var(--p-ink); font: 600 14px var(--body); text-decoration: none; cursor: pointer; transition: border-color .2s, background .2s; }
 .bm-share a:hover, .bm-share button:hover { border-color: var(--p-gold); background: var(--p-gold-soft); }
+.bm-ozet { margin: 14px 0 0; font: 600 14px var(--body); }
+.bm-ozet a { color: var(--p-ink); text-decoration: underline; text-decoration-color: var(--p-gold); text-underline-offset: 3px; }
+.bm-ozet a:hover { color: var(--p-gold); }
 
 /* sources */
 .bm-sources { margin-top: 3em; }
@@ -308,7 +311,7 @@ html:not(.js) .bm-progress { display: none; }
   .bm-body :target { animation: none; }
 }
 @media print {
-  .top, .bm-sub, .bm-progress, .bm-share, .bm-cta, .bm-follow, .bm-related, .bm-toc, .bm-toc-m, .bm-aa-btn, .bm-foot { display: none !important; }
+  .top, .bm-sub, .bm-progress, .bm-share, .bm-ozet, .bm-cta, .bm-follow, .bm-related, .bm-toc, .bm-toc-m, .bm-aa-btn, .bm-foot { display: none !important; }
   body.bm { background: #fff; color: #000; }
 }
 
