@@ -90,3 +90,6 @@ h3 { font-weight: 560; }
   .stats b { font-size: 24px; }
 }
 @media (prefers-reduced-motion: reduce) { .sk { -webkit-backdrop-filter: none; backdrop-filter: none; background: #121B30; } }
+
+/* Country prose under the page intro: the one paragraph written for that country alone. */
+.cp-ozel { font-size: 17px; line-height: 1.7; color: var(--ivory); padding-inline-start: 16px; border-inline-start: 2px solid rgba(230, 201, 138, .4); }
