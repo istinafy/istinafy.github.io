@@ -74,7 +74,7 @@ h3 { font-weight: 560; }
 .sk-u { font: 500 17px var(--serif); color: var(--ivory); }
 .sk-d { font: 400 14px var(--body); color: var(--muted); }
 .sk-note { margin: 16px 0 0; font: 400 13px/1.55 var(--body); color: var(--dim); }
-.sk-more { display: inline-flex; align-items: center; gap: 8px; margin-top: 14px; color: var(--gold-2); font: 600 14px var(--body); text-decoration: none; border-bottom: 1px solid rgba(230, 201, 138, .35); padding-bottom: 2px; }
+.sk-more { display: inline-flex; align-items: center; gap: 8px; margin-top: 14px; color: var(--gold-2); font: 600 14px var(--body); text-decoration: none; border-bottom: 1px solid rgba(230, 201, 138, .35); min-height: 28px; padding: 4px 0 2px; }
 .sk-more:hover { color: var(--gold-3); border-color: var(--gold-3); }
 [dir="rtl"] .sk-more span { transform: scaleX(-1); display: inline-block; }
 
