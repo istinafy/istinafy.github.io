@@ -69,6 +69,8 @@ window.I18N.tr = {
   nav_pact: "Yeni kurallar",
   nav_faq: "Sorular",
   nav_law: "Hukuki dayanak",
+  nav_ornek: "Örnek dosya",
+  ornek_more: "Örnek dosyayı indirin: mahkemeye giden bir dilekçe ve yol haritası",
   chip_1: "Üst düzey algoritmalar",
   chip_2: "Çok hızlı",
   chip_3: "Çok kapsamlı",

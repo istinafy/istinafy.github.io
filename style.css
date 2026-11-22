@@ -66,6 +66,9 @@ a { color: var(--gold-2); }
 .nav a:hover::after { transform: scaleX(1); }
 /* Bilgi Merkezi: Turkish articles, linked from all seven menus in gold so it is found; "TR" names the language on the other six. */
 .nav .nav-bm { color: var(--gold-2); font-weight: 600; }
+/* From 1366px the menu is one row with 35px to spare in the widest language (audit 14-11), too little for a ninth link:
+   there the sample case is reached from the #how section and every footer; below it the link sits in the menu list. */
+@media (min-width: 1366px) { .nav .nav-or { display: none; } }
 .nav .nav-bm:hover { color: var(--gold-3); }
 .nav-tr { display: inline-block; margin-inline-start: 4px; padding: 0 4px; border: 1px solid var(--line-2); border-radius: 4px; font-size: 10px; font-weight: 700; line-height: 15px; letter-spacing: .06em; vertical-align: 2px; }
 .lang { display: inline-flex; align-items: center; gap: 6px; color: var(--gold); margin-inline-start: auto; }
@@ -443,6 +446,8 @@ details p { margin: 0 0 24px; color: var(--muted); }
 .cp-table th { color: var(--gold); font: 700 13px var(--head); letter-spacing: .14em; text-transform: uppercase; }
 .cp-table td + td { white-space: nowrap; font-weight: 700; color: var(--gold-3); }
 .cp-warn { color: var(--gold-3); font-weight: 600; }
+/* Sample-case page (/xx/ornek/): the language note must not read as small print. Cards and viewer: pdf-gorunum.css. */
+.or-note { margin: 26px 0 0; padding: 18px 22px; border: 1px solid var(--gold); border-inline-start-width: 4px; border-radius: 14px; background: rgba(201, 164, 92, .10); color: var(--ivory); font-weight: 600; }
 .cp-links { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; }
 .cp-links a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 16px; border-radius: 999px; border: 1px solid var(--line); background: rgba(201, 164, 92, .05); color: var(--muted); font-size: 14px; text-decoration: none; }
 .cp-links a:hover { border-color: var(--gold); color: var(--gold-3); }

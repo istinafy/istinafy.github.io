@@ -69,6 +69,8 @@ window.I18N.fr = {
   nav_pact: "Nouvelles règles",
   nav_faq: "Questions",
   nav_law: "Base juridique",
+  nav_ornek: "Exemple de dossier",
+  ornek_more: "Téléchargez l'exemple de dossier : une requête déposée au tribunal et sa feuille de route",
   chip_1: "Algorithmes avancés",
   chip_2: "Très rapide",
   chip_3: "Très complet",

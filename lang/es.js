@@ -69,6 +69,8 @@ window.I18N.es = {
   nav_pact: "Nuevas normas",
   nav_faq: "Preguntas",
   nav_law: "Base legal",
+  nav_ornek: "Expediente de ejemplo",
+  ornek_more: "Descargue el expediente de ejemplo: un escrito presentado ante el tribunal y su hoja de ruta",
   chip_1: "Algoritmos avanzados",
   chip_2: "Muy rápido",
   chip_3: "Muy completo",

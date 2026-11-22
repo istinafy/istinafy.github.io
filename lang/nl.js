@@ -69,6 +69,8 @@ window.I18N.nl = {
   nav_pact: "Nieuwe regels",
   nav_faq: "Vragen",
   nav_law: "Juridische basis",
+  nav_ornek: "Voorbeelddossier",
+  ornek_more: "Download het voorbeelddossier: een ingediend beroepschrift en het stappenplan",
   chip_1: "Geavanceerde algoritmes",
   chip_2: "Zeer snel",
   chip_3: "Zeer volledig",

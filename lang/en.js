@@ -69,6 +69,8 @@ window.I18N.en = {
   nav_pact: "New rules",
   nav_faq: "Questions",
   nav_law: "Legal basis",
+  nav_ornek: "Sample case",
+  ornek_more: "Download the sample case: an appeal letter filed with the court and its roadmap",
   chip_1: "Advanced algorithms",
   chip_2: "Very fast",
   chip_3: "Very thorough",
