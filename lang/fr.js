@@ -70,7 +70,7 @@ window.I18N.fr = {
   nav_faq: "Questions",
   nav_law: "Base juridique",
   nav_ornek: "Exemple de dossier",
-  ornek_more: "Téléchargez l'exemple de dossier : une requête déposée au tribunal et sa feuille de route",
+  ornek_more: "Voir l'exemple de dossier : la requête, ses annexes et la feuille de route",
   chip_1: "Algorithmes avancés",
   chip_2: "Très rapide",
   chip_3: "Très complet",

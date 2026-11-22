@@ -70,7 +70,7 @@ window.I18N.es = {
   nav_faq: "Preguntas",
   nav_law: "Base legal",
   nav_ornek: "Expediente de ejemplo",
-  ornek_more: "Descargue el expediente de ejemplo: un escrito presentado ante el tribunal y su hoja de ruta",
+  ornek_more: "Vea el expediente de ejemplo: el escrito de recurso, sus anexos y la hoja de ruta",
   chip_1: "Algoritmos avanzados",
   chip_2: "Muy rápido",
   chip_3: "Muy completo",

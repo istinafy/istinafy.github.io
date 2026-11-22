@@ -70,7 +70,7 @@ window.I18N.nl = {
   nav_faq: "Vragen",
   nav_law: "Juridische basis",
   nav_ornek: "Voorbeelddossier",
-  ornek_more: "Download het voorbeelddossier: een ingediend beroepschrift en het stappenplan",
+  ornek_more: "Bekijk het voorbeelddossier: het beroepschrift, de bijlagen en het stappenplan",
   chip_1: "Geavanceerde algoritmes",
   chip_2: "Zeer snel",
   chip_3: "Zeer volledig",

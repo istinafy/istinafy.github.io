@@ -70,7 +70,7 @@ window.I18N.en = {
   nav_faq: "Questions",
   nav_law: "Legal basis",
   nav_ornek: "Sample case",
-  ornek_more: "Download the sample case: an appeal letter filed with the court and its roadmap",
+  ornek_more: "See the sample case: the appeal letter, its annexes and the roadmap",
   chip_1: "Advanced algorithms",
   chip_2: "Very fast",
   chip_3: "Very thorough",

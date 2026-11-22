@@ -70,7 +70,7 @@ window.I18N.ku = {
   nav_faq: "Pirs",
   nav_law: "Bingeha hiqûqî",
   nav_ornek: "Dosyeya mînak",
-  ornek_more: "Dosyeya mînak daxînin: daxwaznameyek ku çû dadgehê û nexşeya rê",
+  ornek_more: "Dosyeya mînak bibînin: daxwaznameya îtirazê, pêvekên wê û nexşeya rê",
   chip_1: "Algorîtmayên pêşketî",
   chip_2: "Gelek zû",
   chip_3: "Gelek berfireh",
