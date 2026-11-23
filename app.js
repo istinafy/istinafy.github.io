@@ -427,11 +427,42 @@
   function setMenu(open) {
     hdr.classList.toggle("menu-open", open);
     MENU_BTN.setAttribute("aria-expanded", open ? "true" : "false");
+    if (open) setSample(false);
   }
   MENU_BTN.addEventListener("click", function () { setMenu(!hdr.classList.contains("menu-open")); });
   document.getElementById("nav").addEventListener("click", function (e) { if (e.target.closest("a")) setMenu(false); });
   document.addEventListener("keydown", function (e) { if (e.key === "Escape") setMenu(false); });
   document.addEventListener("click", function (e) { if (!hdr.contains(e.target)) setMenu(false); });
+
+  // The sample letter tab under the header (site-uret.js sampleTab): without JS a link to /<lang>/ornek/, here a button
+  // that opens the two documents below it. A story circle marked data-ot (Turkish home) opens the same panel. It closes on
+  // Escape, on a click outside, on a second press, and when one of its links is followed or opens the PDF viewer.
+  var SAMPLE_TAB = document.getElementById("ot-tab"), SAMPLE_POP = document.getElementById("ot-pop");
+  function setSample(open, focusIn) {
+    if (!SAMPLE_TAB || !SAMPLE_POP) return;
+    SAMPLE_POP.hidden = !open;
+    SAMPLE_TAB.setAttribute("aria-expanded", open ? "true" : "false");
+    if (!open) return;
+    setMenu(false);
+    if (focusIn) SAMPLE_POP.querySelector("a").focus({ preventScroll: true });
+  }
+  if (SAMPLE_TAB && SAMPLE_POP) {
+    SAMPLE_TAB.setAttribute("role", "button");
+    SAMPLE_TAB.setAttribute("aria-expanded", "false");
+    SAMPLE_TAB.addEventListener("click", function (e) { e.preventDefault(); setSample(SAMPLE_POP.hidden, false); });
+    SAMPLE_TAB.addEventListener("keydown", function (e) {
+      if (e.key === " ") { e.preventDefault(); setSample(SAMPLE_POP.hidden, true); }
+    });
+    SAMPLE_POP.addEventListener("click", function (e) { if (e.target.closest("a")) setSample(false); });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && !SAMPLE_POP.hidden) { setSample(false); SAMPLE_TAB.focus({ preventScroll: true }); }
+    });
+    document.addEventListener("click", function (e) {
+      var circle = e.target.closest && e.target.closest("[data-ot]");
+      if (circle && !e.ctrlKey && !e.metaKey && !e.shiftKey && !e.altKey) { e.preventDefault(); setSample(SAMPLE_POP.hidden, true); return; }
+      if (!SAMPLE_POP.hidden && !SAMPLE_POP.contains(e.target) && !SAMPLE_TAB.contains(e.target)) setSample(false);
+    });
+  }
 
   renderSocial();
   var initial = pickInitialLang();

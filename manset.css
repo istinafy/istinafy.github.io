@@ -1,0 +1,129 @@
+/* Bilgi Merkezi story circles on /tr/ (markup: bilgi-uret.js homeBlock, behaviour: js/manset.js).
+   Up to 1399px: one row right under the header, swiped sideways, the first thing on the page.
+   From 1400px: a column fixed at the left edge, in the margin beside the 1160px content, in view while the page scrolls.
+   A circle opens its articles full screen (.hkv, built by the script); a gold ring means the reader has not seen them all. */
+
+.hk { position: relative; z-index: 5; border-bottom: 1px solid var(--line); background: var(--bg); }
+.hk-row { display: flex; gap: 10px; max-width: 1160px; margin: 0 auto; padding: 12px 16px 10px; list-style: none; overflow-x: auto;
+  overscroll-behavior-x: contain; scroll-snap-type: x proximity; scroll-padding-inline: 16px; scrollbar-width: none; }
+.hk-row::-webkit-scrollbar { display: none; }
+.hk-row li { flex: none; scroll-snap-align: start; }
+.hk-c { display: flex; flex-direction: column; align-items: center; gap: 6px; width: 74px; color: var(--ivory); text-decoration: none; -webkit-tap-highlight-color: transparent; }
+.hk-ring { display: block; width: 66px; height: 66px; padding: 2.5px; border-radius: 50%;
+  background: conic-gradient(from 200deg, var(--gold-3), var(--gold), var(--red), var(--gold), var(--gold-3)); transition: transform .25s var(--ease); }
+.hk-c.is-seen .hk-ring { background: rgba(244, 239, 230, .3); }
+.hk-or .hk-ring { background: linear-gradient(140deg, var(--gold-3), var(--gold) 55%, var(--gold-2)); }
+.hk-ph { position: relative; display: block; width: 100%; height: 100%; overflow: hidden; border: 2.5px solid var(--bg); border-radius: 50%; background: var(--bg-3); }
+.hk-ph picture, .hk-ph img { display: block; width: 100%; height: 100%; }
+.hk-ph img { object-fit: cover; }
+/* The letter's first page: the top, where the court and the heading are. */
+.hk-or .hk-ph { background: #fff; }
+.hk-or .hk-ph img { object-position: 50% 6%; transform: scale(1.5); transform-origin: 50% 0; }
+.hk-ph-all { display: grid; place-items: center; background: radial-gradient(circle at 30% 25%, var(--bg-3), var(--bg)); }
+.hk-ph-all img { width: 30px; height: 30px; object-fit: contain; }
+.hk-lb { display: -webkit-box; max-width: 74px; overflow: hidden; font: 500 12px/1.22 var(--head); text-align: center; overflow-wrap: anywhere;
+  -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+.hk-or .hk-lb { color: var(--gold-3); font-weight: 700; }
+.hk-c:focus-visible { outline: none; }
+.hk-c:focus-visible .hk-ring { outline: 2px solid var(--gold-2); outline-offset: 3px; }
+.hk-c:active .hk-ring { transform: scale(.94); }
+
+/* On a phone the hero starts closer under the row, so its first lines stay on the first screen. */
+@media (max-width: 899px) {
+  .hk + .hero { padding-top: 26px; }
+}
+@media (min-width: 900px) {
+  .hk-row { justify-content: center; gap: 18px; padding: 16px 24px 14px; }
+  .hk-c { width: 84px; }
+  .hk-ring { width: 74px; height: 74px; }
+  .hk-lb { max-width: 84px; font-size: 13px; }
+}
+/* The column needs 1160px of content plus its own width on the left; at 1400px that leaves 120px, it takes 96. */
+@media (min-width: 1400px) {
+  .hk { position: fixed; top: 92px; left: 14px; z-index: 15; width: 96px; border: 1px solid var(--line); border-radius: 48px;
+    background: rgba(9, 14, 26, .82); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); }
+  .hk-row { flex-direction: column; align-items: center; gap: 12px; max-height: calc(100vh - 116px); padding: 14px 0; overflow-x: hidden; overflow-y: auto;
+    scroll-snap-type: none; }
+  .hk-c { width: 84px; gap: 5px; }
+  .hk-ring { width: 60px; height: 60px; }
+  .hk-lb { font-size: 12px; }
+}
+@media (hover: hover) {
+  .hk-c:hover .hk-ring { transform: scale(1.06); }
+}
+
+/* ---- the story viewer ---- */
+.hkv-open, .hkv-open body { overflow: hidden; }
+.hkv { position: fixed; inset: 0; z-index: 60; display: grid; place-items: center; overflow: hidden; background: #04070d; }
+.hkv[hidden] { display: none; }
+.hkv-bg { position: absolute; inset: -60px; background: #04070d center / cover no-repeat; filter: blur(36px) brightness(.36) saturate(1.25); }
+.hkv-stage { position: relative; width: 100%; height: 100%; }
+.hkv-card { position: relative; display: flex; flex-direction: column; width: 100%; height: 100%; overflow: hidden; color: #fff;
+  background: linear-gradient(180deg, rgba(4, 7, 13, .35), rgba(4, 7, 13, .1) 30%, rgba(4, 7, 13, .55)); touch-action: none; user-select: none; -webkit-user-select: none; }
+.hkv-top { position: relative; z-index: 3; padding: calc(10px + env(safe-area-inset-top)) 12px 0; transition: opacity .2s; }
+.hkv-bars { display: flex; gap: 4px; }
+.hkv-bars span { flex: 1; height: 3px; overflow: hidden; border-radius: 3px; background: rgba(255, 255, 255, .3); }
+.hkv-bars i { display: block; width: 0; height: 100%; background: #fff; }
+.hkv-bars .done i { width: 100%; }
+.hkv-bars .cur i { animation: hkv-fill 9s linear forwards; }
+.hkv.is-paused .hkv-bars .cur i, .hkv.is-held .hkv-bars .cur i { animation-play-state: paused; }
+@keyframes hkv-fill { from { width: 0; } to { width: 100%; } }
+.hkv-head { display: flex; align-items: center; gap: 10px; min-height: 48px; margin-top: 6px; }
+.hkv-av { flex: none; width: 34px; height: 34px; overflow: hidden; border: 1.5px solid rgba(255, 255, 255, .75); border-radius: 50%; background: #fff; }
+.hkv-av img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.hkv-g { min-width: 0; overflow: hidden; font: 700 14.5px/1.2 var(--head); color: #fff; text-decoration: none; white-space: nowrap; text-overflow: ellipsis; }
+.hkv-g:hover { text-decoration: underline; text-underline-offset: 3px; }
+.hkv-n { flex: none; font: 500 12.5px/1 var(--head); color: rgba(255, 255, 255, .7); }
+.hkv-i { display: grid; place-items: center; flex: none; width: 44px; height: 44px; padding: 0; border: 0; border-radius: 50%; color: #fff; background: none; cursor: pointer; }
+.hkv-play { margin-inline-start: auto; }
+.hkv-play[hidden] { display: none; }
+.hkv-play[hidden] + .hkv-x { margin-inline-start: auto; }
+.hkv-i:hover { background: rgba(255, 255, 255, .12); }
+.hkv-pi { display: block; width: 10px; height: 13px; border-inline: 3px solid currentColor; }
+.hkv.is-paused .hkv-pi { width: 0; height: 0; margin-inline-start: 3px; border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent currentColor; }
+.hkv-body { position: relative; z-index: 1; display: flex; flex: 1; flex-direction: column; justify-content: center; gap: 14px; min-height: 0; padding: 12px 22px; }
+.hkv-ph { position: relative; overflow: hidden; aspect-ratio: 16 / 9; border-radius: 14px; background: rgba(255, 255, 255, .06); box-shadow: 0 18px 44px rgba(0, 0, 0, .45); }
+.hkv-ph picture, .hkv-ph img { display: block; width: 100%; height: 100%; }
+.hkv-ph img { object-fit: cover; transition: opacity .3s; }
+.hkv-ph.is-ld img { opacity: 0; }
+.hkv-chip { align-self: flex-start; padding: 6px 10px; border-radius: 999px; font: 700 11px/1 var(--head); letter-spacing: .12em; text-transform: uppercase; color: #0B1220; background: var(--gold-2); }
+.hkv-h { display: -webkit-box; max-width: none; margin: 0; overflow: hidden; font: 600 25px/1.2 var(--serif); letter-spacing: -.01em; color: #fff; text-wrap: balance;
+  -webkit-line-clamp: 4; -webkit-box-orient: vertical; }
+.hkv-p { display: -webkit-box; margin: 0; overflow: hidden; font: 400 15.5px/1.5 var(--body); color: rgba(244, 239, 230, .88); -webkit-line-clamp: 5; -webkit-box-orient: vertical; }
+.hkv-d { font: 500 12.5px/1.2 var(--head); color: rgba(244, 239, 230, .68); }
+.hkv-foot { position: relative; z-index: 3; padding: 4px 22px calc(18px + env(safe-area-inset-bottom)); transition: opacity .2s; }
+.hkv-go { display: flex; align-items: center; justify-content: center; gap: 8px; min-height: 54px; border-radius: 14px; font: 700 16.5px var(--body); color: #0B1220;
+  text-decoration: none; background: var(--gold-2); box-shadow: 0 10px 30px rgba(0, 0, 0, .35); }
+.hkv-go:hover { background: var(--gold-3); }
+.hkv-go:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+.hkv.is-held .hkv-top, .hkv.is-held .hkv-foot { opacity: 0; }
+/* Tap areas over the story: the left third goes back, the rest goes on. */
+.hkv-tap { position: absolute; top: 96px; bottom: 96px; z-index: 2; padding: 0; border: 0; background: none; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+.hkv-tp { left: 0; width: 32%; }
+.hkv-tn { right: 0; width: 68%; }
+.hkv-tap:focus-visible { outline: 2px solid var(--gold-2); outline-offset: -8px; border-radius: 16px; }
+.hkv-arr { display: none; }
+
+/* Wider screens: a phone-shaped card in the middle, arrows beside it. */
+@media (min-width: 600px) and (min-height: 560px) {
+  .hkv-stage { width: auto; height: min(880px, 94vh); aspect-ratio: 9 / 16; }
+  .hkv-card { border-radius: 18px; box-shadow: 0 30px 90px rgba(0, 0, 0, .6); background-color: rgba(12, 18, 32, .55); }
+  .hkv-top { padding-top: 12px; }
+  .hkv-foot { padding-bottom: 20px; }
+  .hkv-arr { position: absolute; top: 50%; display: grid; place-items: center; width: 46px; height: 46px; margin-top: -23px; padding: 0;
+    border: 1px solid rgba(255, 255, 255, .25); border-radius: 50%; color: #fff; background: rgba(255, 255, 255, .1); cursor: pointer; }
+  .hkv-arr:hover { background: rgba(255, 255, 255, .22); }
+  .hkv-ap { right: calc(100% + 22px); }
+  .hkv-an { left: calc(100% + 22px); }
+}
+@media (max-height: 640px) {
+  .hkv-body { gap: 10px; }
+  .hkv-h { font-size: 21px; -webkit-line-clamp: 3; }
+  .hkv-p { -webkit-line-clamp: 3; font-size: 14.5px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hk-ring, .hkv-ph img, .hkv-top, .hkv-foot { transition: none; }
+  .hk-c:hover .hk-ring, .hk-c:active .hk-ring { transform: none; }
+  .hkv-bars .cur i { width: 100%; animation: none; }
+}
