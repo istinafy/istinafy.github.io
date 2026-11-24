@@ -1,4 +1,4 @@
-// Bilgi Merkezi story circles on /tr/ (markup: bilgi-uret.js homeBlock, styles: site/manset.css).
+// Bilgi Merkezi story circles on every home page (markup: bilgi-uret.js homeBlock, styles: site/manset.css).
 // Without JS every circle is a link to its list page. With it a circle opens its articles one at a time, full screen,
 // starting at the first one the reader has not seen: the right part of the card (or Right key) goes on, the left part
 // (or Left key) goes back, a sideways swipe jumps to the next or previous circle, and a swipe down, Escape, the back
@@ -41,6 +41,8 @@
   var nav = document.getElementById("bilgi"), tpl = document.getElementById("hk-data");
   if (!nav) return;
   var html = document.documentElement;
+  // Off /tr/ the row carries the page's words (data-t-*) and the articles' language (data-al); /tr/ keeps the defaults.
+  var W = function (k, d) { return nav.getAttribute("data-t-" + k) || d; }, AL = nav.getAttribute("data-al");
   var rail = window.matchMedia ? window.matchMedia(RAIL) : null, inView = true;
   var paintTab = function () { html.classList.toggle("hk-out", !inView || !!(rail && rail.matches)); };
   if ("IntersectionObserver" in window) new IntersectionObserver(function (es) { inView = es[es.length - 1].isIntersecting; paintTab(); }).observe(nav);
@@ -115,7 +117,7 @@
     v.play = button("hkv-i hkv-play", "", head);
     el("span", "hkv-pi", v.play);
     v.play.hidden = reduce;
-    v.x = button("hkv-i hkv-x", "Kapat", head);
+    v.x = button("hkv-i hkv-x", W("close", "Kapat"), head);
     v.x.innerHTML = '<svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>';
     v.body = el("div", "hkv-body", v.card);
     v.ph = el("div", "hkv-ph", v.body);
@@ -134,14 +136,19 @@
     v.h.id = "hkv-h";
     v.p = el("p", "hkv-p", v.body);
     v.d = el("time", "hkv-d", v.body);
+    if (AL) [v.h, v.p].forEach(function (e) { e.lang = AL; e.dir = "ltr"; });
     var foot = el("div", "hkv-foot", v.card);
     v.go = el("a", "hkv-go", foot);
-    v.go.innerHTML = 'Yazıyı oku <span aria-hidden="true">→</span>';
-    v.tp = button("hkv-tap hkv-tp", "Önceki yazı", v.card);
-    v.tn = button("hkv-tap hkv-tn", "Sonraki yazı", v.card);
-    v.ap = button("hkv-arr hkv-ap", "Önceki yazı", stage);
+    v.go.textContent = W("read", "Yazıyı oku") + " ";
+    var arrow = el("span", "", v.go);
+    arrow.textContent = "→";
+    arrow.setAttribute("aria-hidden", "true");
+    if (AL) v.go.hreflang = AL;
+    v.tp = button("hkv-tap hkv-tp", W("prev", "Önceki yazı"), v.card);
+    v.tn = button("hkv-tap hkv-tn", W("next", "Sonraki yazı"), v.card);
+    v.ap = button("hkv-arr hkv-ap", W("prev", "Önceki yazı"), stage);
     v.ap.innerHTML = CHEV(-1);
-    v.an = button("hkv-arr hkv-an", "Sonraki yazı", stage);
+    v.an = button("hkv-arr hkv-an", W("next", "Sonraki yazı"), stage);
     v.an.innerHTML = CHEV(1);
     document.body.appendChild(v.root);
 
@@ -184,7 +191,7 @@
   function setPlaying(on) {
     S.playing = on && !reduce;
     V.root.classList.toggle("is-paused", !S.playing);
-    V.play.setAttribute("aria-label", S.playing ? "Otomatik geçişi durdur" : "Otomatik geçişi başlat");
+    V.play.setAttribute("aria-label", S.playing ? W("pause", "Otomatik geçişi durdur") : W("play", "Otomatik geçişi başlat"));
   }
   function show(g, i, byUser) {
     S.g = g; S.i = i;
