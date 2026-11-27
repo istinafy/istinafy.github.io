@@ -57,128 +57,16 @@
     return packs.en ? "en" : cfg.defaultLang;
   }
 
-  var WA_ICON = '<svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.3-.4.8-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></svg>';
-
-  // Only the size attributes change; the path data also contains "22" and must stay as drawn.
-  function sizedIcon(svg, px) {
-    return svg.replace(/ width="\d+" height="\d+"/, ' width="' + px + '" height="' + px + '"');
-  }
-
-  var MAIL_ICON = '<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Zm1 2.4V17h16V7.4l-8 5.3-8-5.3ZM5.6 7 12 11.2 18.4 7H5.6Z"/></svg>';
-
-  var SOCIAL_ICONS = {
-    instagram: '<svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>',
-    tiktok: '<svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M16.6 5.8A4.3 4.3 0 0 1 15.5 3h-3.1v12.4a2.6 2.6 0 1 1-2.6-2.6c.3 0 .5 0 .8.1V9.7a5.7 5.7 0 1 0 4.9 5.7V9.1a7.3 7.3 0 0 0 4.3 1.4V7.4a4.3 4.3 0 0 1-3.2-1.6Z"/></svg>',
-    youtube: '<svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" fill-rule="evenodd" d="M21.6 7.2a2.5 2.5 0 0 0-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4A2.5 2.5 0 0 0 2.4 7.2 26 26 0 0 0 2 12a26 26 0 0 0 .4 4.8 2.5 2.5 0 0 0 1.8 1.8C5.8 19 12 19 12 19s6.2 0 7.8-.4a2.5 2.5 0 0 0 1.8-1.8A26 26 0 0 0 22 12a26 26 0 0 0-.4-4.8ZM10 15V9l5.2 3L10 15Z"/></svg>',
-    facebook: '<svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M13.5 21v-7.5h2.5l.4-3h-2.9V8.6c0-.9.3-1.5 1.5-1.5h1.6V4.4c-.3 0-1.2-.1-2.3-.1-2.3 0-3.8 1.4-3.8 3.9v2.3H8v3h2.5V21h3Z"/></svg>'
-  };
-
-  // Countries named in the services block; the last chip ("and anywhere in the world") comes from the language pack.
-  var WORLD = ["NL", "TR", "DE", "BE", "FR", "GB", "SE", "AT", "CH", "IT", "ES", "US"];
-
   var CAL_ICON = '<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M7 2h2v2h6V2h2v2h3a1 1 0 0 1 1 1v15a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3V2Zm12 8H5v9h14v-9Z"/></svg>';
 
-  var PREFILL = { lawyer: "wa_prefill_lawyer", biz: "wa_prefill_biz" };
-  var WA_LABEL = { lawyer: "lawyers_cta_wa", biz: "svc_btn", dl: "dl_wa" };
-
-  function waHref(kind, text) {
-    // The prefilled first line tells the owner which language the person reads and who is writing (person, lawyer, business).
-    var digits = String(cfg.whatsapp).replace(/[^0-9]/g, "");
-    return "https://wa.me/" + digits + "?text=" + encodeURIComponent(text || t(PREFILL[kind] || "wa_prefill"));
+  // The prefilled first line tells the owner which language the person reads and what the calculator found.
+  function waHref(text) {
+    return "https://wa.me/" + String(cfg.whatsapp).replace(/[^0-9]/g, "") + "?text=" + encodeURIComponent(text);
   }
 
   // An unknown placeholder stays visible instead of vanishing, so a broken translation shows up in the message.
   function fill(tpl, vars) {
     return String(tpl).replace(/\{(\w)\}/g, function (m, k) { return vars[k] != null ? vars[k] : m; });
-  }
-
-  function renderSocial() {
-    document.querySelectorAll("[data-social]").forEach(function (ul) {
-      ul.innerHTML = "";
-      (cfg.social || []).forEach(function (s) {
-        var li = document.createElement("li");
-        var a = document.createElement("a");
-        a.href = s.url;
-        a.target = "_blank";
-        a.rel = "noopener noreferrer";
-        a.setAttribute("aria-label", s.name);
-        a.title = s.name;
-        a.innerHTML = SOCIAL_ICONS[s.id] || "";
-        li.appendChild(a);
-        ul.appendChild(li);
-      });
-    });
-  }
-
-  function renderWorld() {
-    document.querySelectorAll("[data-world]").forEach(function (ul) {
-      ul.innerHTML = "";
-      WORLD.concat([null]).forEach(function (c) {
-        var li = document.createElement("li");
-        li.textContent = c ? countryName(c) : t("svc_world");
-        ul.appendChild(li);
-      });
-    });
-  }
-
-  function renderContacts() {
-    var hasWa = !!cfg.whatsapp;
-    document.body.classList.toggle("has-bar", hasWa);
-    document.querySelectorAll("[data-contact]").forEach(function (box) {
-      box.innerHTML = "";
-      var kind = box.getAttribute("data-contact");
-      var lawyer = kind === "lawyer";
-      if (kind === "fab") {
-        if (hasWa) { box.href = waHref(""); box.target = "_blank"; box.rel = "noopener noreferrer"; box.innerHTML = sizedIcon(WA_ICON, 30); }
-        else box.removeAttribute("href");
-        return;
-      }
-      if (kind === "bar") {
-        if (hasWa) box.appendChild(waLink(""));
-        return;
-      }
-      if (kind === "biz") {
-        if (hasWa) box.appendChild(waLink("biz"));
-        return;
-      }
-      if (!hasWa && !cfg.email) {
-        var s = document.createElement("span");
-        s.className = "soon";
-        s.textContent = t("cta_soon");
-        box.appendChild(s);
-        return;
-      }
-      if (hasWa) box.appendChild(waLink(kind));
-      if (cfg.email) {
-        var m = document.createElement("a");
-        m.className = "btn mail";
-        m.href = "mailto:" + cfg.email + "?subject=" + encodeURIComponent(t(lawyer ? "mail_subject_lawyer" : "mail_subject"));
-        m.innerHTML = MAIL_ICON;
-        var ms = document.createElement("span");
-        ms.textContent = lawyer ? t("lawyers_cta") : t("cta_email");
-        m.appendChild(ms);
-        box.appendChild(m);
-      }
-      if (kind === "full" && cfg.email) {
-        var addr = document.createElement("p");
-        addr.className = "addr";
-        addr.textContent = cfg.email;
-        box.appendChild(addr);
-      }
-    });
-  }
-
-  function waLink(kind, text) {
-    var wa = document.createElement("a");
-    wa.className = "btn wa";
-    wa.href = waHref(kind, text);
-    wa.target = "_blank";
-    wa.rel = "noopener noreferrer";
-    wa.innerHTML = WA_ICON;
-    var s = document.createElement("span");
-    s.textContent = t(WA_LABEL[kind] || "cta_whatsapp");
-    wa.appendChild(s);
-    return wa;
   }
 
   function apply(lang) {
@@ -193,11 +81,8 @@
       el.setAttribute("content", t(el.getAttribute("data-i18n-content")));
     });
     document.title = t("page_title");
-    renderContacts();
     renderCountries();
-    renderWorld();
     renderCountryLinks();
-    MENU_BTN.setAttribute("aria-label", t("nav_menu"));
     var out = document.getElementById("dl-out");
     if (out.dataset.last) calc();
     try { localStorage.setItem("lang", lang); } catch (e) { /* not persisted; page still works */ }
@@ -339,7 +224,13 @@
     var box = document.createElement("div");
     box.className = "dl-act";
     if (cfg.whatsapp) {
-      box.appendChild(waLink("dl", fill(t("wa_prefill_dl"), { c: countryName(code), t: termLabel(term), d: formatDate(date), e: formatDate(v.end) })));
+      var wa = document.createElement("a");
+      wa.className = "btn";
+      wa.href = waHref(fill(t("wa_prefill_dl"), { c: countryName(code), t: termLabel(term), d: formatDate(date), e: formatDate(v.end) }));
+      wa.target = "_blank";
+      wa.rel = "noopener noreferrer";
+      wa.textContent = t("dl_wa");
+      box.appendChild(wa);
     }
     if (v.left >= 0) {
       var b = document.createElement("button");
@@ -359,10 +250,7 @@
         u: location.origin + "/" + current + "/?utm_source=whatsapp&utm_medium=share#deadline" }));
       sh.target = "_blank";
       sh.rel = "noopener noreferrer";
-      sh.innerHTML = WA_ICON;
-      var ss = document.createElement("span");
-      ss.textContent = t("dl_share");
-      sh.appendChild(ss);
+      sh.textContent = t("dl_share");
       box.appendChild(sh);
     }
     return box;
@@ -400,95 +288,16 @@
   TYPE.addEventListener("change", function () { CUSTOM_WRAP.hidden = TYPE.value !== "custom"; syncDateLabel(); });
   document.getElementById("dl-date").max = todayISO();
 
-  var sel = document.getElementById("lang-select");
-  // From config, not from the loaded packs: this page carries one pack, and every listed language has its own page.
-  cfg.languages.forEach(function (l) {
-    var o = document.createElement("option");
-    o.value = l.code;
-    o.textContent = l.name;
-    sel.appendChild(o);
-  });
-  function langHref(code) { return "/" + code + "/" + location.hash; }
-  // A full load of /xx/, not an in-place rewrite: a phone's translation layer still running on the old page
-  // keeps translating the new text, which left pages half Turkish, half Dutch and split the logo into "ISTINAF Y".
-  sel.addEventListener("change", function () {
-    try { localStorage.setItem("lang", sel.value); } catch (e) { /* the folder in the address carries the choice */ }
-    location.assign(langHref(sel.value));
-  });
-  // Back button: a page restored from cache must not show the language the visitor left for.
-  window.addEventListener("pageshow", function () { sel.value = current; });
   document.getElementById("dl-form").addEventListener("submit", function (e) {
     e.preventDefault();
     calc();
   });
 
-  var hdr = document.getElementById("hdr");
-  var MENU_BTN = document.getElementById("menu-btn");
-  function setMenu(open) {
-    hdr.classList.toggle("menu-open", open);
-    MENU_BTN.setAttribute("aria-expanded", open ? "true" : "false");
-    if (open) setSample(false);
-  }
-  MENU_BTN.addEventListener("click", function () { setMenu(!hdr.classList.contains("menu-open")); });
-  document.getElementById("nav").addEventListener("click", function (e) { if (e.target.closest("a")) setMenu(false); });
-  document.addEventListener("keydown", function (e) { if (e.key === "Escape") setMenu(false); });
-  document.addEventListener("click", function (e) { if (!hdr.contains(e.target)) setMenu(false); });
-
-  // The sample letter tab under the header (site-uret.js sampleTab): without JS a link to /<lang>/ornek/, here a button
-  // that opens the two documents below it. A story circle marked data-ot (Turkish home) opens the same panel. It closes on
-  // Escape, on a click outside, on a second press, and when one of its links is followed or opens the PDF viewer.
-  var SAMPLE_TAB = document.getElementById("ot-tab"), SAMPLE_POP = document.getElementById("ot-pop");
-  function setSample(open, focusIn) {
-    if (!SAMPLE_TAB || !SAMPLE_POP) return;
-    SAMPLE_POP.hidden = !open;
-    SAMPLE_TAB.setAttribute("aria-expanded", open ? "true" : "false");
-    if (!open) return;
-    setMenu(false);
-    if (focusIn) SAMPLE_POP.querySelector("a").focus({ preventScroll: true });
-  }
-  if (SAMPLE_TAB && SAMPLE_POP) {
-    SAMPLE_TAB.setAttribute("role", "button");
-    SAMPLE_TAB.setAttribute("aria-expanded", "false");
-    SAMPLE_TAB.addEventListener("click", function (e) { e.preventDefault(); setSample(SAMPLE_POP.hidden, false); });
-    SAMPLE_TAB.addEventListener("keydown", function (e) {
-      if (e.key === " ") { e.preventDefault(); setSample(SAMPLE_POP.hidden, true); }
-    });
-    SAMPLE_POP.addEventListener("click", function (e) { if (e.target.closest("a")) setSample(false); });
-    document.addEventListener("keydown", function (e) {
-      if (e.key === "Escape" && !SAMPLE_POP.hidden) { setSample(false); SAMPLE_TAB.focus({ preventScroll: true }); }
-    });
-    document.addEventListener("click", function (e) {
-      var circle = e.target.closest && e.target.closest("[data-ot]");
-      if (circle && !e.ctrlKey && !e.metaKey && !e.shiftKey && !e.altKey) { e.preventDefault(); setSample(SAMPLE_POP.hidden, true); return; }
-      if (!SAMPLE_POP.hidden && !SAMPLE_POP.contains(e.target) && !SAMPLE_TAB.contains(e.target)) setSample(false);
-    });
-  }
-
-  renderSocial();
   var initial = pickInitialLang();
-  sel.value = initial;
   apply(initial);
   // Country pages link here with ?c=XX so the calculator opens on that country.
   var preCountry = (new URLSearchParams(location.search).get("c") || "").toUpperCase();
   if (window.Ulke.countries[preCountry]) { COUNTRY.value = preCountry; renderTypes(true); }
-
-  function onScroll() { hdr.classList.toggle("scrolled", window.scrollY > 12); }
-  window.addEventListener("scroll", onScroll, { passive: true });
-  onScroll();
-
-  // On phones the fixed WhatsApp bar repeated the hero buttons on the first screen; it slides in once they scroll away.
-  // Without IntersectionObserver the class is never set and the bar simply stays.
-  var heroCta = document.querySelector(".hero-text .cta[data-contact]");
-  if ("IntersectionObserver" in window && heroCta) {
-    document.body.classList.add("cta-in");
-    new IntersectionObserver(function (en) {
-      document.body.classList.toggle("cta-in", en[en.length - 1].isIntersecting);
-    }).observe(heroCta);
-  }
-
-  // Audience cards and topics took 2,600 px on a phone; there they start folded, on wide screens open.
-  var wide = window.matchMedia("(min-width: 901px)").matches;
-  document.querySelectorAll("details[data-open-wide]").forEach(function (d) { d.open = wide; });
 
   // Hiding starts only here, at the end of a run that worked; whatever is already on screen stays shown.
   function startReveal() {

@@ -1,13 +1,13 @@
 {
   "name": "ISTINAFY",
   "short_name": "ISTINAFY",
-  "description": "İltica ret kararınıza itiraz dilekçesi: kendi dilinizde yol haritası (son gününüz, mahkeme ve adres) + mahkemeye hazır dilekçe. Avrupa'nın her ülkesi.",
+  "description": "İltica itirazından iş, aile, kira, idare ve ceza hukukuna: belgenizi okuruz, son gününüzü hesaplarız, dilekçenizi kaynaklı hazırlarız.",
   "lang": "tr",
   "start_url": "/tr/",
   "scope": "/",
   "display": "standalone",
-  "background_color": "#0B1220",
-  "theme_color": "#0B1220",
+  "background_color": "#ffffff",
+  "theme_color": "#0f0f0f",
   "icons": [
     {
       "src": "/img/icon-192.png",

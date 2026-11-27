@@ -10,7 +10,7 @@
     <xhtml:link rel="alternate" hreflang="nl" href="https://istinafy.com/nl/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://istinafy.com/"/>
   </url>
-  <url><loc>https://istinafy.com/tr/</loc><lastmod>2026-11-24</lastmod>
+  <url><loc>https://istinafy.com/tr/</loc><lastmod>2026-11-27</lastmod>
     <xhtml:link rel="alternate" hreflang="tr" href="https://istinafy.com/tr/"/>
     <xhtml:link rel="alternate" hreflang="ku" href="https://istinafy.com/ku/"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://istinafy.com/ar/"/>
@@ -20,7 +20,7 @@
     <xhtml:link rel="alternate" hreflang="nl" href="https://istinafy.com/nl/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://istinafy.com/"/>
   </url>
-  <url><loc>https://istinafy.com/ku/</loc><lastmod>2026-11-24</lastmod>
+  <url><loc>https://istinafy.com/ku/</loc><lastmod>2026-11-27</lastmod>
     <xhtml:link rel="alternate" hreflang="tr" href="https://istinafy.com/tr/"/>
     <xhtml:link rel="alternate" hreflang="ku" href="https://istinafy.com/ku/"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://istinafy.com/ar/"/>
@@ -30,7 +30,7 @@
     <xhtml:link rel="alternate" hreflang="nl" href="https://istinafy.com/nl/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://istinafy.com/"/>
   </url>
-  <url><loc>https://istinafy.com/ar/</loc><lastmod>2026-11-24</lastmod>
+  <url><loc>https://istinafy.com/ar/</loc><lastmod>2026-11-27</lastmod>
     <xhtml:link rel="alternate" hreflang="tr" href="https://istinafy.com/tr/"/>
     <xhtml:link rel="alternate" hreflang="ku" href="https://istinafy.com/ku/"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://istinafy.com/ar/"/>
@@ -40,7 +40,7 @@
     <xhtml:link rel="alternate" hreflang="nl" href="https://istinafy.com/nl/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://istinafy.com/"/>
   </url>
-  <url><loc>https://istinafy.com/es/</loc><lastmod>2026-11-24</lastmod>
+  <url><loc>https://istinafy.com/es/</loc><lastmod>2026-11-27</lastmod>
     <xhtml:link rel="alternate" hreflang="tr" href="https://istinafy.com/tr/"/>
     <xhtml:link rel="alternate" hreflang="ku" href="https://istinafy.com/ku/"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://istinafy.com/ar/"/>
@@ -50,7 +50,7 @@
     <xhtml:link rel="alternate" hreflang="nl" href="https://istinafy.com/nl/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://istinafy.com/"/>
   </url>
-  <url><loc>https://istinafy.com/fr/</loc><lastmod>2026-11-24</lastmod>
+  <url><loc>https://istinafy.com/fr/</loc><lastmod>2026-11-27</lastmod>
     <xhtml:link rel="alternate" hreflang="tr" href="https://istinafy.com/tr/"/>
     <xhtml:link rel="alternate" hreflang="ku" href="https://istinafy.com/ku/"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://istinafy.com/ar/"/>
@@ -60,7 +60,7 @@
     <xhtml:link rel="alternate" hreflang="nl" href="https://istinafy.com/nl/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://istinafy.com/"/>
   </url>
-  <url><loc>https://istinafy.com/en/</loc><lastmod>2026-11-24</lastmod>
+  <url><loc>https://istinafy.com/en/</loc><lastmod>2026-11-27</lastmod>
     <xhtml:link rel="alternate" hreflang="tr" href="https://istinafy.com/tr/"/>
     <xhtml:link rel="alternate" hreflang="ku" href="https://istinafy.com/ku/"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://istinafy.com/ar/"/>
@@ -70,7 +70,7 @@
     <xhtml:link rel="alternate" hreflang="nl" href="https://istinafy.com/nl/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://istinafy.com/"/>
   </url>
-  <url><loc>https://istinafy.com/nl/</loc><lastmod>2026-11-24</lastmod>
+  <url><loc>https://istinafy.com/nl/</loc><lastmod>2026-11-27</lastmod>
     <xhtml:link rel="alternate" hreflang="tr" href="https://istinafy.com/tr/"/>
     <xhtml:link rel="alternate" hreflang="ku" href="https://istinafy.com/ku/"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://istinafy.com/ar/"/>
@@ -79,6 +79,24 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://istinafy.com/en/"/>
     <xhtml:link rel="alternate" hreflang="nl" href="https://istinafy.com/nl/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://istinafy.com/"/>
+  </url>
+  <url><loc>https://istinafy.com/tr/avukatlar/</loc><lastmod>2026-11-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://istinafy.com/tr/avukatlar/"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://istinafy.com/nl/advocaten/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://istinafy.com/en/lawyers/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://istinafy.com/en/lawyers/"/>
+  </url>
+  <url><loc>https://istinafy.com/nl/advocaten/</loc><lastmod>2026-11-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://istinafy.com/tr/avukatlar/"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://istinafy.com/nl/advocaten/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://istinafy.com/en/lawyers/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://istinafy.com/en/lawyers/"/>
+  </url>
+  <url><loc>https://istinafy.com/en/lawyers/</loc><lastmod>2026-11-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://istinafy.com/tr/avukatlar/"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://istinafy.com/nl/advocaten/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://istinafy.com/en/lawyers/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://istinafy.com/en/lawyers/"/>
   </url>
   <url><loc>https://istinafy.com/tr/hukuk/</loc><lastmod>2026-11-21</lastmod>
     <xhtml:link rel="alternate" hreflang="tr" href="https://istinafy.com/tr/hukuk/"/>
@@ -1970,7 +1988,7 @@
     <xhtml:link rel="alternate" hreflang="nl" href="https://istinafy.com/nl/mt/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://istinafy.com/en/mt/"/>
   </url>
-  <url><loc>https://istinafy.com/tr/nl/</loc><lastmod>2026-11-21</lastmod>
+  <url><loc>https://istinafy.com/tr/nl/</loc><lastmod>2026-11-27</lastmod>
     <xhtml:link rel="alternate" hreflang="tr" href="https://istinafy.com/tr/nl/"/>
     <xhtml:link rel="alternate" hreflang="ku" href="https://istinafy.com/ku/nl/"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://istinafy.com/ar/nl/"/>

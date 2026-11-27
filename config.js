@@ -9,6 +9,10 @@ window.SITE_CONFIG = {
     { id: "youtube", name: "YouTube", url: "https://www.youtube.com/@istinafy" },
     { id: "facebook", name: "Facebook", url: "https://www.facebook.com/istinafyy" }
   ],
+  // The footer prints only the filled fields; with all of them empty the legal line is not printed at all.
+  legal: { kvk: "", btw: "", address: "", termsUrl: "", privacyUrl: "" },
+  // Lawyer portal sign-in address; empty sends "Giriş" to an e-mail asking for portal access.
+  portalUrl: "",
   defaultLang: "tr",
   languages: [
     { code: "tr", name: "Türkçe", dir: "ltr" },
